@@ -1,0 +1,31 @@
+footer {
+  font-size: 16px;
+}
+#mainFooter {
+   background-color: white;
+}
+#footerBottom {
+  min-height: 25px;
+  background-color: grey;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+#bottomRight {
+  color: white;
+}
+
+#bottomRight .linkedin-logo {
+  margin-left: 5px;
+}
+
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+
+.list-unstyled li {
+  margin-top: 5px;
+}
