@@ -10,7 +10,7 @@ PCIE.config(function($stateProvider, $urlRouterProvider) {
         // nested list with custom controller
         .state('pcie.localisation', {
             url: '/localisation',
-            templateUrl: '/PCIE/views/pcie/Localisation.html',
+            templateUrl: '/PCIE/views/pcie/localisation.html',
             controller: function($scope) {
                 $scope.adresses = ['6 avenue Prat Gimont', '31130', 'Balma'];
             }
@@ -19,7 +19,7 @@ PCIE.config(function($stateProvider, $urlRouterProvider) {
         // nested list with custom controller
         .state('pcie.valeurs', {
             url: '/valeurs',
-            templateUrl: '/PCIE/views/pcie/Nos-Valeurs.html',
+            templateUrl: '/PCIE/views/pcie/nos-valeurs.html',
             controller: function($scope) {
                 $scope.adresses = ['test', 'test'];
             }
@@ -28,7 +28,7 @@ PCIE.config(function($stateProvider, $urlRouterProvider) {
         // nested list with custom controller
         .state('pcie.equipe', {
             url: '/equipe',
-            templateUrl: '/PCIE/views/pcie/Notre-Equipe.html',
+            templateUrl: '/PCIE/views/pcie/notre-equipe.html',
             controller: function($scope) {
                 $scope.adresses = ['dev', 'web', 'test'];
             }
@@ -37,7 +37,7 @@ PCIE.config(function($stateProvider, $urlRouterProvider) {
         // nested list with custom controller
         .state('pcie.quisommenous', {
             url: '/quisommenous',
-            templateUrl: '/PCIE/views/pcie/Qui-Sommes-Nous.html',
+            templateUrl: '/PCIE/views/pcie/qui-sommes-nus.html',
             controller: function($scope) {
                 $scope.adresses = ['6 avenue Prat Gimont', '31130', 'Balma'];
             }
