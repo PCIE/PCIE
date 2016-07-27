@@ -965,7 +965,7 @@ describe("Restangular", function() {
   });
 
   describe("withConfig", function() {
-    it("should create new service with scoped configuration", function() {
+    it("should create new factory with scoped configuration", function() {
       var childRestangular = Restangular.withConfig(function(RestangularConfigurer){
         RestangularConfigurer.setBaseUrl('/api/v1');
       });
@@ -1114,7 +1114,7 @@ describe("Restangular", function() {
       expect(restangularSpaces.getRestangularUrl()).toEqual("/accounts/123/buildings/456/spaces/");
     });
 
-    it("should create a new service and still working normilized URL", function() {
+    it("should create a new factory and still working normilized URL", function() {
       var newRes = Restangular.withConfig(function(RestangularConfigurer){
         RestangularConfigurer.setBaseUrl('http://localhost:8080');
       });

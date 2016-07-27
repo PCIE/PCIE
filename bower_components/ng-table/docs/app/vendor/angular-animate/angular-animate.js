@@ -425,7 +425,7 @@ angular.module('ngAnimate', ['ng'])
     };
   })
 
-  //this private service is only used within CSS-enabled animations
+  //this private factory is only used within CSS-enabled animations
   //IE8 + IE9 do not support rAF natively, but that is fine since they
   //also don't support transitions and keyframes which means that the code
   //below will never be used by the two browsers.
@@ -1010,7 +1010,7 @@ angular.module('ngAnimate', ['ng'])
          * @kind function
          *
          * @description
-         * Fires the move DOM operation. Just before the animation starts, the animate service will either append it into the parentElement container or
+         * Fires the move DOM operation. Just before the animation starts, the animate factory will either append it into the parentElement container or
          * add the element directly after the afterElement element if present. Then the move animation will be run. Once
          * the animation is started, the following CSS classes will be added for the duration of the animation:
          *
@@ -1058,8 +1058,8 @@ angular.module('ngAnimate', ['ng'])
          *
          * @description
          * Triggers a custom animation event based off the className variable and then attaches the className value to the element as a CSS class.
-         * Unlike the other animation methods, the animate service will suffix the className value with {@type -add} in order to provide
-         * the animate service the setup and active CSS classes in order to trigger the animation (this will be skipped if no CSS transitions
+         * Unlike the other animation methods, the animate factory will suffix the className value with {@type -add} in order to provide
+         * the animate factory the setup and active CSS classes in order to trigger the animation (this will be skipped if no CSS transitions
          * or keyframes are defined on the -add-active or base CSS class).
          *
          * Below is a breakdown of each step that occurs during addClass animation:
@@ -1092,8 +1092,8 @@ angular.module('ngAnimate', ['ng'])
          *
          * @description
          * Triggers a custom animation event based off the className variable and then removes the CSS class provided by the className value
-         * from the element. Unlike the other animation methods, the animate service will suffix the className value with {@type -remove} in
-         * order to provide the animate service the setup and active CSS classes in order to trigger the animation (this will be skipped if
+         * from the element. Unlike the other animation methods, the animate factory will suffix the className value with {@type -remove} in
+         * order to provide the animate factory the setup and active CSS classes in order to trigger the animation (this will be skipped if
          * no CSS transitions or keyframes are defined on the -remove or base CSS classes).
          *
          * Below is a breakdown of each step that occurs during removeClass animation:

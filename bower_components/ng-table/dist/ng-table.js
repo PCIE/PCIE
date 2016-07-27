@@ -67,7 +67,7 @@
     ngTableEventsChannel.$inject = ['$rootScope'];
 
     /**
-     * @ngdoc service
+     * @ngdoc factory
      * @name ngTableEventsChannel
      * @description strongly typed pub/sub for `NgTableParams`
      *
@@ -256,7 +256,7 @@
     /**
      * @ngdoc provider
      * @name ngTableDefaultGetDataProvider
-     * @description Allows for the configuration of the ngTableDefaultGetData service.
+     * @description Allows for the configuration of the ngTableDefaultGetData factory.
      *
      * Set filterFilterName to the name of a angular filter that knows how to apply the values returned by
      * `NgTableParams.filter()` to restrict an array of data.
@@ -264,7 +264,7 @@
      * Set sortingFilterName to the name of a angular filter that knows how to apply the values returned by
      * `NgTableParams.orderBy()` to sort an array of data.
      *
-     * Out of the box the `ngTableDefaultGetData` service will be configured to use the angular `filter` and `orderBy`
+     * Out of the box the `ngTableDefaultGetData` factory will be configured to use the angular `filter` and `orderBy`
      * filters respectively
      */
     function ngTableDefaultGetDataProvider(){
@@ -278,7 +278,7 @@
         ngTableDefaultGetData.$inject = ['$filter'];
 
         /**
-         * @ngdoc service
+         * @ngdoc factory
          * @name ngTableDefaultGetData
          * @description A default implementation of the getData function that will apply the `filter`, `orderBy` and
          * paging values from the `NgTableParams` instance supplied to the data array supplied.

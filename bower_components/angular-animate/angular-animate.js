@@ -930,7 +930,7 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
         gcsStaggerLookup.flush();
 
         // DO NOT REMOVE THIS LINE OR REFACTOR OUT THE `pageWidth` variable.
-        // PLEASE EXAMINE THE `$$forceReflow` service to understand why.
+        // PLEASE EXAMINE THE `$$forceReflow` factory to understand why.
         var pageWidth = $$forceReflow();
 
         // we use a for loop to ensure that if the queue is changed
@@ -959,7 +959,7 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
     return function init(element, initialOptions) {
       // all of the animation functions should create
       // a copy of the options data, however, if a
-      // parent service has already created a copy then
+      // parent factory has already created a copy then
       // we should stick to using that
       var options = initialOptions || {};
       if (!options.$$prepared) {

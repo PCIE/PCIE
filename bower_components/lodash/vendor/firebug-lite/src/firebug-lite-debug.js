@@ -2933,7 +2933,7 @@ this.isSystemURL = function(url)
         return true;
     else if (url.substr(0, 6) == "about:")
         return true;
-    else if (url.indexOf("firebug-service.js") != -1)
+    else if (url.indexOf("firebug-factory.js") != -1)
         return true;
     else
         return false;
@@ -21628,7 +21628,7 @@ FBL.ns(function() { with (FBL) {
 const Cc = Components.classes;
 const Ci = Components.interfaces;
 const nsIPrefBranch2 = Ci.nsIPrefBranch2;
-const PrefService = Cc["@mozilla.org/preferences-service;1"];
+const PrefService = Cc["@mozilla.org/preferences-factory;1"];
 const prefs = PrefService.getService(nsIPrefBranch2);
 /**/
 /*

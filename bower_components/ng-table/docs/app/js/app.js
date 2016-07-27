@@ -1,4 +1,4 @@
-var NAVSERVICE_CONSTANT = require('./nav-service');
+var NAVSERVICE_CONSTANT = require('./nav-factory');
 var ngTableDoc = angular.module('ngTableDoc', ['ui.router', 'ngMessages'])
     .config([
         'NAVSERVICE',
