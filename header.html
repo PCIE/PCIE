@@ -1,48 +1,58 @@
-<nav id="mainNav" class="navbar navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle collapsed button-toggle" data-toggle="collapse"
-                    data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span> Menu <i class="zmdi zmdi-view-headline"></i>
-            </button>
-            <a id="header-logo" class="navbar-brand" href="#">
-                <img id="fat" src="img/pcie-logo-fat.png" width="240px" height="90px">
-                <img id="tiny" src="img/pcie-logo-tiny.gif" width="104px" height="40px">
-            </a>
+<div ng-controller="MainCtrl">
+    <nav id="mainNav" class="navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle collapsed button-toggle" data-toggle="collapse"
+                        data-target=".navbar-collapse">
+                    <i class="fa fa-bars" aria-hidden="true"></i> Menu
+                </button>
+                <a id="header-logo" class="navbar-brand" href="#">
+                    <img id="fat" src="img/pcie-logo-fat.png" style="width:240px;height:90px;">
+                    <img id="tiny" src="img/pcie-logo-tiny.gif" style="width:104px;height:40px;">
+                </a>
+            </div>
+            <div id="firstNavBar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav client-nav navbar-right">
+                    <li class="categorie">
+                        <a href="#">A propos de PCIE</a>
+                    </li>
+                    <li class="categorie">
+                        <a href="#">Nos Services</a>
+                    </li>
+                    <li class="categorie">
+                        <a href="#">Carrières</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="sous-categorie" style="display:none">
+                        <a data-toggle="collapse" data-target=".navbar-collapse">Qui Sommes Nous ?</a>
+                    </li>
+                    <li class="sous-categorie" style="display:none">
+                        <a data-toggle="collapse" data-target=".navbar-collapse">Nos Valeurs</a>
+                    </li>
+                    <li class="sous-categorie" style="display:none">
+                        <a data-toggle="collapse" data-target=".navbar-collapse">Notre équipe</a>
+                    </li>
+                    <li class="sous-categorie" style="display:none">
+                        <a data-toggle="collapse" data-target=".navbar-collapse">Localisation</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="secondNavBar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav client-nav navbar-right">
+                    <li>
+                        <a>Qui sommes nous ?</a>
+                    </li>
+                    <li>
+                        <a>Nos Valeurs</a>
+                    </li>
+                    <li>
+                        <a>Notre équipe</a>
+                    </li>
+                    <li>
+                        <a>Localisation</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div id="firstNavBar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav client-nav navbar-right">
-                <li class="categorie">
-                    <a href="#">A propos de PCIE</a>
-                </li>
-                <li class="categorie">
-                    <a href="#">Nos Services</a>
-                </li>
-                <li class="categorie">
-                    <a href="#">Carrières</a>
-                </li>
-                <li class="divider"></li>
-                <li class="sous-categorie" style="display: none;" du-scrollspy="sommes">
-                    <a href="#sommes" du-smooth-scroll="sommes">Qui sommes nous ?</a>
-                </li>
-                <li class="sous-categorie" style="display: none;" du-scrollspy="valeur">
-                    <a du-smooth-scroll="valeur">Nos Valeurs</a>
-                </li>
-                <li class="sous-categorie" style="display: none;" du-scrollspy="equipe">
-                    <a du-smooth-scroll="equipe">Notre équipe</a>
-                </li>
-                <li class="sous-categorie" style="display: none;" du-scrollspy="localisation">
-                    <a du-smooth-scroll="localisation">Localisation</a>
-                </li>
-            </ul>
-        </div>
-        <div id="secondNavBar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav client-nav navbar-right">
-                <li href="#sommes" du-scrollspy="sommes"><a du-smooth-scroll="sommes">Qui sommes nous ?</a></li>
-                <li du-scrollspy="valeur"><a du-smooth-scroll="valeur">Nos Valeurs</a></li>
-                <li du-scrollspy="equipe"><a du-smooth-scroll="equipe">Notre équipe</a></li>
-                <li du-scrollspy="localisation"><a du-smooth-scroll="localisation">Localisation</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+    </nav>
+</div>

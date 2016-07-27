@@ -150,9 +150,31 @@ nav.navbar.shrink {
         overflow: hidden;
         background-color: #1E88E5;
     }
+
+    #fat {
+        display: none;
+    }
+
+    #tiny {
+        display: inline;
+    }
+
+    .categorie {
+        display: inline !important;;
+    }
+
+    .sous-categorie {
+        display: inline !important;
+        visibility: visible;
+    }
+
+    #secondNavBar {
+        visibility: hidden;
+    }
 }
 
 @media all and (min-width: 769px) {
+
     .navbar {
         -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
         -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
@@ -181,6 +203,7 @@ nav.navbar.shrink {
 
     .sous-categorie {
         display: none;
+        visibility: hidden;
     }
 
     .categorie {
@@ -190,6 +213,18 @@ nav.navbar.shrink {
     .divider {
         display: none;
         margin: auto;
+    }
+
+    #fat {
+        display: inline;
+    }
+
+    #tiny {
+        display: none;
+    }
+
+    #secondNavBar {
+        visibility: visible;
     }
 }
 
@@ -224,4 +259,8 @@ nav.navbar.shrink {
 .nav > li > a:hover, .nav > li > a:focus {
     color: red;
     background-color: #eee;
+}
+
+section {
+    min-height: 600px;
 }

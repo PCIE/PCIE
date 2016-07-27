@@ -1,3 +1,4 @@
-PCIE.controller('MainCtrl', function ($scope, $document) {
+PCIE.controller('MainCtrl', function ($scope) {
+
     }
 );
