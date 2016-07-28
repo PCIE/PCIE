@@ -6,7 +6,7 @@ var _ = require('lodash'),
     webpack = require('webpack');
 
 var file = require('../common/file'),
-  util = require('../common/util');
+    util = require('../common/util');
 
 var basePath = path.join(__dirname, '..', '..'),
     distPath = path.join(basePath, 'dist'),

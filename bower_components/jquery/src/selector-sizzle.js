@@ -3,7 +3,7 @@ define( [
 	"../external/sizzle/dist/sizzle"
 ], function( jQuery, Sizzle ) {
 
-    "use strict";
+"use strict";
 
 jQuery.find = Sizzle;
 jQuery.expr = Sizzle.selectors;
@@ -14,6 +14,6 @@ jQuery.uniqueSort = jQuery.unique = Sizzle.uniqueSort;
 jQuery.text = Sizzle.getText;
 jQuery.isXMLDoc = Sizzle.isXML;
 jQuery.contains = Sizzle.contains;
-    jQuery.escapeSelector = Sizzle.escape;
+jQuery.escapeSelector = Sizzle.escape;
 
 } );

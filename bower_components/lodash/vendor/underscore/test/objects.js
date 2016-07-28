@@ -339,11 +339,7 @@
 
     assert.notOk(_.isEqual('Curly', 'Larry'), 'String primitives with different values are not equal');
     assert.notOk(_.isEqual(new String('Curly'), new String('Larry')), 'String objects with different primitive values are not equal');
-    assert.notOk(_.isEqual(new String('Curly'), {
-      toString: function () {
-        return 'Curly';
-      }
-    }), 'String objects and objects with a custom `toString` method are not equal');
+    assert.notOk(_.isEqual(new String('Curly'), {toString: function(){ return 'Curly'; }}), 'String objects and objects with a custom `toString` method are not equal');
 
     // Number object and primitive comparisons.
     assert.ok(_.isEqual(75, 75), 'Identical number primitives are equal');
@@ -354,11 +350,7 @@
     assert.notOk(_.isEqual(0, new Number(-0)), 'Commutative equality is implemented for `new Number(0)` and `-0`');
 
     assert.notOk(_.isEqual(new Number(75), new Number(63)), 'Number objects with different primitive values are not equal');
-    assert.notOk(_.isEqual(new Number(63), {
-      valueOf: function () {
-        return 63;
-      }
-    }), 'Number objects and objects with a `valueOf` method are not equal');
+    assert.notOk(_.isEqual(new Number(63), {valueOf: function(){ return 63; }}), 'Number objects and objects with a `valueOf` method are not equal');
 
     // Comparisons involving `NaN`.
     assert.ok(_.isEqual(NaN, NaN), '`NaN` is equal to `NaN`');
@@ -404,12 +396,7 @@
     assert.notOk(_.isEqual(/(?:)/g, /(?:)/gi), 'RegExps with equivalent patterns and different flags are not equal');
     assert.notOk(_.isEqual(/Moe/gim, /Curly/gim), 'RegExps with different patterns and equivalent flags are not equal');
     assert.notOk(_.isEqual(/(?:)/gi, /(?:)/g), 'Commutative equality is implemented for RegExps');
-    assert.notOk(_.isEqual(/Curly/g, {
-      source: 'Larry',
-      global: true,
-      ignoreCase: false,
-      multiline: false
-    }), 'RegExps and RegExp-like objects are not equal');
+    assert.notOk(_.isEqual(/Curly/g, {source: 'Larry', global: true, ignoreCase: false, multiline: false}), 'RegExps and RegExp-like objects are not equal');
 
     // Empty arrays, array-like objects, and object literals.
     assert.ok(_.isEqual({}, {}), 'Empty object literals are equal');
@@ -453,20 +440,11 @@
     // Simple objects.
     assert.ok(_.isEqual({a: 'Curly', b: 1, c: true}, {a: 'Curly', b: 1, c: true}), 'Objects containing identical primitives are equal');
     assert.ok(_.isEqual({a: /Curly/g, b: new Date(2009, 11, 13)}, {a: /Curly/g, b: new Date(2009, 11, 13)}), 'Objects containing equivalent members are equal');
-    assert.notOk(_.isEqual({a: 63, b: 75}, {
-      a: 61,
-      b: 55
-    }), 'Objects of identical sizes with different values are not equal');
-    assert.notOk(_.isEqual({a: 63, b: 75}, {
-      a: 61,
-      c: 55
-    }), 'Objects of identical sizes with different property names are not equal');
+    assert.notOk(_.isEqual({a: 63, b: 75}, {a: 61, b: 55}), 'Objects of identical sizes with different values are not equal');
+    assert.notOk(_.isEqual({a: 63, b: 75}, {a: 61, c: 55}), 'Objects of identical sizes with different property names are not equal');
     assert.notOk(_.isEqual({a: 1, b: 2}, {a: 1}), 'Objects of different sizes are not equal');
     assert.notOk(_.isEqual({a: 1}, {a: 1, b: 2}), 'Commutative equality is implemented for objects');
-    assert.notOk(_.isEqual({x: 1, y: void 0}, {
-      x: 1,
-      z: 2
-    }), 'Objects with identical keys and different values are not equivalent');
+    assert.notOk(_.isEqual({x: 1, y: void 0}, {x: 1, z: 2}), 'Objects with identical keys and different values are not equivalent');
 
     // `A` contains nested objects and arrays.
     a = {
@@ -562,10 +540,7 @@
     assert.ok(_.isEqual(a, b), 'Cyclic structures with nested and identically-named properties are equal');
 
     // Chaining.
-    assert.notOk(_.isEqual(_({x: 1, y: void 0}).chain(), _({
-      x: 1,
-      z: 2
-    }).chain()), 'Chained objects containing different values are not equal');
+    assert.notOk(_.isEqual(_({x: 1, y: void 0}).chain(), _({x: 1, z: 2}).chain()), 'Chained objects containing different values are not equal');
 
     a = _({x: 1, y: 2}).chain();
     b = _({x: 1, y: 2}).chain();
@@ -869,7 +844,7 @@
     assert.notOk(_.isNaN(new Number(0)), 'wrapped 0 is not NaN');
     assert.ok(_.isNaN(NaN), 'but NaN is');
     assert.ok(_.isNaN(new Number(NaN)), 'wrapped NaN is still NaN');
-    if (typeof Symbol !== 'undefined') {
+    if (typeof Symbol !== 'undefined'){
       assert.notOk(_.isNaN(Symbol()), 'symbol is not NaN');
     }
   });

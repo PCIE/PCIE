@@ -75,8 +75,8 @@ module.exports = function componentsDataProcessor() {
             docs.push({
                 name: 'NAVSERVICE',
                 template: 'constants.template.js',
-                outputPath: 'app/js/nav-factory.js',
-                path: 'app/js/nav-factory.js',
+                outputPath: 'app/js/nav-service.js',
+                path: 'app/js/nav-service.js',
                 items: navigation
             });
         }

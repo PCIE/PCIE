@@ -209,8 +209,8 @@ function baseConvert(util, name, func, options) {
         return func;
       };
     },
-    'rearg': function (rearg) {
-      return function (func, indexes) {
+    'rearg': function(rearg) {
+      return function(func, indexes) {
         var n = indexes ? indexes.length : 0;
         return curry(rearg(func, indexes), n);
       };
@@ -273,9 +273,9 @@ function baseConvert(util, name, func, options) {
   function castFixed(name, func, n) {
     if (config.fixed && (forceFixed || !mapping.skipFixed[name])) {
       var data = mapping.methodSpread[name],
-        start = data && data.start;
+          start = data && data.start;
 
-      return start === undefined ? ary(func, n) : spread(func, start);
+      return start  === undefined ? ary(func, n) : spread(func, start);
     }
     return func;
   }
@@ -444,7 +444,7 @@ function baseConvert(util, name, func, options) {
       each(mapping.aryMethod[aryKey], function(otherName) {
         if (name == otherName) {
           var spreadData = mapping.methodSpread[name],
-            afterRearg = spreadData && spreadData.afterRearg;
+              afterRearg = spreadData && spreadData.afterRearg;
 
           result = afterRearg
             ? castFixed(name, castRearg(name, wrapped, aryKey), aryKey)

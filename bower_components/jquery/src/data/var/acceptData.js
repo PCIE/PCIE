@@ -1,6 +1,6 @@
 define( function() {
 
-    "use strict";
+"use strict";
 
 /**
  * Determines whether an object can have data

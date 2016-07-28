@@ -1,5 +1,5 @@
 define( function() {
-    "use strict";
+	"use strict";
 
 	return [ "Top", "Right", "Bottom", "Left" ];
 } );

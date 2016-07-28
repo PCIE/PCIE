@@ -398,19 +398,11 @@
     assert.expect(2);
     var count = 0;
     var template = _.template('<%= f() %>');
-    template({
-      f: function () {
-        assert.notOk(count++);
-      }
-    });
+    template({f: function(){ assert.notOk(count++); }});
 
     var countEscaped = 0;
     var templateEscaped = _.template('<%- f() %>');
-    templateEscaped({
-      f: function () {
-        assert.notOk(countEscaped++);
-      }
-    });
+    templateEscaped({f: function(){ assert.notOk(countEscaped++); }});
   });
 
   QUnit.test('#746 - _.template settings are not modified.', function(assert) {

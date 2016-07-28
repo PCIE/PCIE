@@ -1,6 +1,6 @@
 define( function() {
 
-    "use strict";
+"use strict";
 
 return function( n, elem ) {
 	var matched = [];

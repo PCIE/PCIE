@@ -2,7 +2,7 @@ define( [
 	"../ajax"
 ], function( jQuery ) {
 
-    "use strict";
+"use strict";
 
 jQuery._evalUrl = function( url ) {
 	return jQuery.ajax( {
@@ -11,7 +11,7 @@ jQuery._evalUrl = function( url ) {
 		// Make this explicit, since user can override this through ajaxSetup (#11264)
 		type: "GET",
 		dataType: "script",
-        cache: true,
+		cache: true,
 		async: false,
 		global: false,
 		"throws": true

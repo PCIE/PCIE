@@ -3139,7 +3139,7 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
 
 angular.module('ui.bootstrap.debounce', [])
 /**
- * A helper, internal factory that debounces a function
+ * A helper, internal service that debounces a function
  */
   .factory('$$debounce', ['$timeout', function($timeout) {
     return function(callback, debounceTime) {
@@ -3629,7 +3629,7 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap', 'ui.bootstrap.p
 
 /**
  * Pluggable resolve mechanism for the modal resolve resolution
- * Supports UI Router's $resolve factory
+ * Supports UI Router's $resolve service
  */
   .provider('$uibResolve', function() {
     var resolve = this;
@@ -3674,7 +3674,7 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap', 'ui.bootstrap.p
   })
 
 /**
- * A helper directive for the $modal factory. It creates a backdrop element.
+ * A helper directive for the $modal service. It creates a backdrop element.
  */
   .directive('uibModalBackdrop', ['$animate', '$injector', '$uibModalStack',
   function($animate, $injector, $modalStack) {
@@ -4351,7 +4351,7 @@ angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap', 'ui.bootstrap.p
 
 angular.module('ui.bootstrap.paging', [])
 /**
- * Helper internal factory for generating common controller code between the
+ * Helper internal service for generating common controller code between the
  * pager and pagination components
  */
 .factory('uibPaging', ['$parse', function($parse) {
@@ -4646,7 +4646,7 @@ angular.module('ui.bootstrap.pagination', ['ui.bootstrap.paging', 'ui.bootstrap.
 angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.stackedMap'])
 
 /**
- * The $tooltip factory creates tooltip- and popover-like directives as well as
+ * The $tooltip service creates tooltip- and popover-like directives as well as
  * houses global options for them.
  */
 .provider('$uibTooltip', function() {
@@ -4706,7 +4706,7 @@ angular.module('ui.bootstrap.tooltip', ['ui.bootstrap.position', 'ui.bootstrap.s
   }
 
   /**
-   * Returns the actual instance of the $tooltip factory.
+   * Returns the actual instance of the $tooltip service.
    * TODO support multiple triggers
    */
   this.$get = ['$window', '$compile', '$timeout', '$document', '$uibPosition', '$interpolate', '$rootScope', '$parse', '$$stackedMap', function($window, $compile, $timeout, $document, $position, $interpolate, $rootScope, $parse, $$stackedMap) {
@@ -6424,8 +6424,8 @@ angular.module('ui.bootstrap.timepicker', [])
 angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.debounce', 'ui.bootstrap.position'])
 
 /**
- * A helper factory that can parse typeahead's syntax (string provided by users)
- * Extracted to a separate factory for ease of unit testing
+ * A helper service that can parse typeahead's syntax (string provided by users)
+ * Extracted to a separate service for ease of unit testing
  */
   .factory('uibTypeaheadParser', ['$parse', function($parse) {
     //                      00000111000000000000022200000000000000003333333333333330000000000044000

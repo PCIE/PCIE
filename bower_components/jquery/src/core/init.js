@@ -6,7 +6,7 @@ define( [
 	"../traversing/findFilter"
 ], function( jQuery, document, rsingleTag ) {
 
-    "use strict";
+"use strict";
 
 // A central reference to the root jQuery(document)
 var rootjQuery,
@@ -14,8 +14,8 @@ var rootjQuery,
 	// A simple way to check for HTML strings
 	// Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
 	// Strict HTML recognition (#11290: must start with <)
-    // Shortcut simple #id case for speed
-    rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]+))$/,
+	// Shortcut simple #id case for speed
+	rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]+))$/,
 
 	init = jQuery.fn.init = function( selector, context, root ) {
 		var match, elem;
@@ -78,11 +78,11 @@ var rootjQuery,
 				} else {
 					elem = document.getElementById( match[ 2 ] );
 
-                    if (elem) {
+					if ( elem ) {
 
 						// Inject the element directly into the jQuery object
 						this[ 0 ] = elem;
-                        this.length = 1;
+						this.length = 1;
 					}
 					return this;
 				}
@@ -99,7 +99,7 @@ var rootjQuery,
 
 		// HANDLE: $(DOMElement)
 		} else if ( selector.nodeType ) {
-            this[0] = selector;
+			this[ 0 ] = selector;
 			this.length = 1;
 			return this;
 

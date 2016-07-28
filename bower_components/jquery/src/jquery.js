@@ -4,7 +4,7 @@ define( [
 	"./traversing",
 	"./callbacks",
 	"./deferred",
-    "./deferred/exceptionHook",
+	"./deferred/exceptionHook",
 	"./core/ready",
 	"./data",
 	"./queue",
@@ -33,7 +33,7 @@ define( [
 	"./exports/amd"
 ], function( jQuery ) {
 
-    "use strict";
+"use strict";
 
 return ( window.jQuery = window.$ = jQuery );
 

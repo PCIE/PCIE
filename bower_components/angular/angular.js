@@ -57,7 +57,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-      message += '\nhttp://errors.angularjs.org/1.5.8/' +
+    message += '\nhttp://errors.angularjs.org/1.5.8/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -836,26 +836,26 @@ function arrayRemove(array, value) {
  * @returns {*} The copy or updated `destination`, if `destination` was specified.
  *
  * @example
- <example module="copyExample">
- <file name="index.html">
- <div ng-controller="ExampleController">
- <form novalidate class="simple-form">
- <label>Name: <input type="text" ng-model="user.name" /></label><br />
- <label>Age:  <input type="number" ng-model="user.age" /></label><br />
- Gender: <label><input type="radio" ng-model="user.gender" value="male" />male</label>
- <label><input type="radio" ng-model="user.gender" value="female" />female</label><br />
- <button ng-click="reset()">RESET</button>
- <button ng-click="update(user)">SAVE</button>
- </form>
- <pre>form = {{user | json}}</pre>
- <pre>master = {{master | json}}</pre>
- </div>
- </file>
- <file name="script.js">
- // Module: copyExample
- angular.
- module('copyExample', []).
- controller('ExampleController', ['$scope', function($scope) {
+  <example module="copyExample">
+    <file name="index.html">
+      <div ng-controller="ExampleController">
+        <form novalidate class="simple-form">
+          <label>Name: <input type="text" ng-model="user.name" /></label><br />
+          <label>Age:  <input type="number" ng-model="user.age" /></label><br />
+          Gender: <label><input type="radio" ng-model="user.gender" value="male" />male</label>
+                  <label><input type="radio" ng-model="user.gender" value="female" />female</label><br />
+          <button ng-click="reset()">RESET</button>
+          <button ng-click="update(user)">SAVE</button>
+        </form>
+        <pre>form = {{user | json}}</pre>
+        <pre>master = {{master | json}}</pre>
+      </div>
+    </file>
+    <file name="script.js">
+      // Module: copyExample
+      angular.
+        module('copyExample', []).
+        controller('ExampleController', ['$scope', function($scope) {
           $scope.master = {};
 
           $scope.reset = function() {
@@ -870,8 +870,8 @@ function arrayRemove(array, value) {
 
           $scope.reset();
         }]);
- </file>
- </example>
+    </file>
+  </example>
  */
 function copy(source, destination) {
   var stackSource = [];
@@ -978,7 +978,7 @@ function copy(source, destination) {
       case '[object Uint8ClampedArray]':
       case '[object Uint16Array]':
       case '[object Uint32Array]':
-          return new source.constructor(copyElement(source.buffer), source.byteOffset, source.length);
+        return new source.constructor(copyElement(source.buffer), source.byteOffset, source.length);
 
       case '[object ArrayBuffer]':
         //Support: IE10
@@ -1811,7 +1811,7 @@ function reloadWithDebugInfo() {
  * @name angular.getTestability
  * @module ng
  * @description
- * Get the testability factory for the instance of Angular on the given
+ * Get the testability service for the instance of Angular on the given
  * element.
  * @param {DOMElement} element DOM element which is the root of angular application.
  */
@@ -2128,9 +2128,9 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#provider
            * @module ng
-           * @param {string} name factory name
+           * @param {string} name service name
            * @param {Function} providerType Construction function for creating new instance of the
-           *                                factory.
+           *                                service.
            * @description
            * See {@link auto.$provide#provider $provide.provider()}.
            */
@@ -2140,8 +2140,8 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#factory
            * @module ng
-           * @param {string} name factory name
-           * @param {Function} providerFunction Function for creating new instance of the factory.
+           * @param {string} name service name
+           * @param {Function} providerFunction Function for creating new instance of the service.
            * @description
            * See {@link auto.$provide#factory $provide.factory()}.
            */
@@ -2151,10 +2151,10 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#service
            * @module ng
-           * @param {string} name factory name
+           * @param {string} name service name
            * @param {Function} constructor A constructor function that will be instantiated.
            * @description
-           * See {@link auto.$provide#service $provide.factory()}.
+           * See {@link auto.$provide#service $provide.service()}.
            */
           service: invokeLaterAndSetModuleName('$provide', 'service'),
 
@@ -2162,7 +2162,7 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#value
            * @module ng
-           * @param {string} name factory name
+           * @param {string} name service name
            * @param {*} object Service instance object.
            * @description
            * See {@link auto.$provide#value $provide.value()}.
@@ -2185,9 +2185,9 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#decorator
            * @module ng
-           * @param {string} name The name of the factory to decorate.
-           * @param {Function} decorFn This function will be invoked when the factory needs to be
-           *                           instantiated and should return the decorated factory instance.
+           * @param {string} name The name of the service to decorate.
+           * @param {Function} decorFn This function will be invoked when the service needs to be
+           *                           instantiated and should return the decorated service instance.
            * @description
            * See {@link auto.$provide#decorator $provide.decorator()}.
            */
@@ -2206,7 +2206,7 @@ function setupModuleLoader(window) {
            *
            *
            * Defines an animation hook that can be later used with
-           * {@link $animate $animate} factory and directives that use this factory.
+           * {@link $animate $animate} service and directives that use this service.
            *
            * ```js
            * module.animation('.animation-name', function($inject1, $inject2) {
@@ -2287,7 +2287,7 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#config
            * @module ng
-           * @param {Function} configFn Execute this function on module load. Useful for factory
+           * @param {Function} configFn Execute this function on module load. Useful for service
            *    configuration.
            * @description
            * Use this method to register work which needs to be performed on module loading.
@@ -2481,7 +2481,7 @@ function toDebugString(obj) {
   $HttpParamSerializerJQLikeProvider,
   $HttpBackendProvider,
   $xhrFactoryProvider,
- $jsonpCallbacksProvider,
+  $jsonpCallbacksProvider,
   $LocationProvider,
   $LogProvider,
   $ParseProvider,
@@ -2519,11 +2519,11 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-    full: '1.5.8',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.5.8',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 5,
-    dot: 8,
-    codeName: 'arbitrary-fallbacks'
+  dot: 8,
+  codeName: 'arbitrary-fallbacks'
 };
 
 
@@ -2554,7 +2554,7 @@ function publishExternalAPI(angular) {
     'isDate': isDate,
     'lowercase': lowercase,
     'uppercase': uppercase,
-      'callbacks': {$$counter: 0},
+    'callbacks': {$$counter: 0},
     'getTestability': getTestability,
     '$$minErr': minErr,
     '$$csp': csp,
@@ -2643,7 +2643,7 @@ function publishExternalAPI(angular) {
         $httpParamSerializerJQLike: $HttpParamSerializerJQLikeProvider,
         $httpBackend: $HttpBackendProvider,
         $xhrFactory: $xhrFactoryProvider,
-          $jsonpCallbacks: $jsonpCallbacksProvider,
+        $jsonpCallbacks: $jsonpCallbacksProvider,
         $location: $LocationProvider,
         $log: $LogProvider,
         $parse: $ParseProvider,
@@ -2882,7 +2882,7 @@ function jqLiteBuildFragment(html, context) {
     nodes.push(context.createTextNode(html));
   } else {
     // Convert html into DOM nodes
-      tmp = fragment.appendChild(context.createElement("div"));
+    tmp = fragment.appendChild(context.createElement("div"));
     tag = (TAG_NAME_REGEXP.exec(html) || ["", ""])[1].toLowerCase();
     wrap = wrapMap[tag] || wrapMap._default;
     tmp.innerHTML = wrap[1] + html.replace(XHTML_TAG_REGEXP, "<$1></$2>") + wrap[2];
@@ -3743,7 +3743,7 @@ forEach({
 });
 
 
-// Provider for private $$jqLite factory
+// Provider for private $$jqLite service
 function $$jqLiteProvider() {
   this.$get = function $$jqLite() {
     return extend(JQLite, {
@@ -4682,7 +4682,7 @@ function createInjector(modulesToLoad, strictDi) {
         var key = $inject[i];
         if (typeof key !== 'string') {
           throw $injectorMinErr('itkn',
-                  'Incorrect injection token! Expected factory name as string, got {0}', key);
+                  'Incorrect injection token! Expected service name as string, got {0}', key);
         }
         args.push(locals && locals.hasOwnProperty(key) ? locals[key] :
                                                          getService(key, serviceName));
@@ -4695,10 +4695,10 @@ function createInjector(modulesToLoad, strictDi) {
       if (msie <= 11) {
         return false;
       }
-        // Support: Edge 12-13 only
-        // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/6156135/
+      // Support: Edge 12-13 only
+      // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/6156135/
       return typeof func === 'function'
-          && /^(?:class\b|constructor\()/.test(stringifyFn(func));
+        && /^(?:class\b|constructor\()/.test(stringifyFn(func));
     }
 
     function invoke(fn, self, locals, serviceName) {
@@ -5860,7 +5860,7 @@ var $CoreAnimateCssProvider = function() {
     return function(element, initialOptions) {
       // all of the animation functions should create
       // a copy of the options data, however, if a
-      // parent factory has already created a copy then
+      // parent service has already created a copy then
       // we should stick to using that
       var options = initialOptions || {};
       if (!options.$$prepared) {
@@ -5936,7 +5936,7 @@ var $CoreAnimateCssProvider = function() {
  * @param {object} window The global window object.
  * @param {object} document jQuery wrapped document.
  * @param {object} $log window.console or an object with the same interface.
- * @param {object} $sniffer $sniffer factory
+ * @param {object} $sniffer $sniffer service
  */
 function Browser(window, document, $log, $sniffer) {
   var self = this,
@@ -6027,8 +6027,8 @@ function Browser(window, document, $log, $sniffer) {
    * location.href/location.replace is used.
    * Returns its own instance to allow chaining
    *
-   * NOTE: this api is intended for use only by the $location factory. Please use the
-   * {@link ng.$location $location factory} to change url.
+   * NOTE: this api is intended for use only by the $location service. Please use the
+   * {@link ng.$location $location service} to change url.
    *
    * @param {string} url New url (when used as setter)
    * @param {boolean=} replace Should new url replace current history record?
@@ -6161,8 +6161,8 @@ function Browser(window, document, $log, $sniffer) {
    *
    * The listener gets called with new url as parameter.
    *
-   * NOTE: this api is intended for use only by the $location factory. Please use the
-   * {@link ng.$location $location factory} to monitor url changes in angular apps.
+   * NOTE: this api is intended for use only by the $location service. Please use the
+   * {@link ng.$location $location service} to monitor url changes in angular apps.
    *
    * @param {function(string)} listener Listener function to be called when url changes.
    * @return {function(string)} Returns the registered listener fn - handy if the fn is anonymous.
@@ -8743,7 +8743,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
           addTextInterpolateDirective(directives, node.nodeValue);
           break;
         case NODE_TYPE_COMMENT: /* Comment */
-            collectCommentDirectives(node, directives, attrs, maxPriority, ignoreDirective);
+          collectCommentDirectives(node, directives, attrs, maxPriority, ignoreDirective);
           break;
       }
 
@@ -8751,23 +8751,23 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       return directives;
     }
 
-        function collectCommentDirectives(node, directives, attrs, maxPriority, ignoreDirective) {
-            // function created because of performance, try/catch disables
-            // the optimization of the whole function #14848
-            try {
-                var match = COMMENT_DIRECTIVE_REGEXP.exec(node.nodeValue);
-                if (match) {
-                    var nName = directiveNormalize(match[1]);
-                    if (addDirective(directives, nName, 'M', maxPriority, ignoreDirective)) {
-                        attrs[nName] = trim(match[2]);
-                    }
-                }
-            } catch (e) {
-                // turns out that under some circumstances IE9 throws errors when one attempts to read
-                // comment's node value.
-                // Just ignore it and continue. (Can't seem to reproduce in test case.)
-            }
+    function collectCommentDirectives(node, directives, attrs, maxPriority, ignoreDirective) {
+      // function created because of performance, try/catch disables
+      // the optimization of the whole function #14848
+      try {
+        var match = COMMENT_DIRECTIVE_REGEXP.exec(node.nodeValue);
+        if (match) {
+          var nName = directiveNormalize(match[1]);
+          if (addDirective(directives, nName, 'M', maxPriority, ignoreDirective)) {
+            attrs[nName] = trim(match[2]);
+          }
         }
+      } catch (e) {
+        // turns out that under some circumstances IE9 throws errors when one attempts to read
+        // comment's node value.
+        // Just ignore it and continue. (Can't seem to reproduce in test case.)
+      }
+    }
 
     /**
      * Given a node with an directive-start it collects all of the siblings until it finds
@@ -9297,12 +9297,10 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
               $exceptionHandler(e);
             }
           }
-            if (isFunction(controllerInstance.$doCheck)) {
-                controllerScope.$watch(function () {
-                    controllerInstance.$doCheck();
-                });
-                controllerInstance.$doCheck();
-            }
+          if (isFunction(controllerInstance.$doCheck)) {
+            controllerScope.$watch(function() { controllerInstance.$doCheck(); });
+            controllerInstance.$doCheck();
+          }
           if (isFunction(controllerInstance.$onDestroy)) {
             controllerScope.$on('$destroy', function callOnDestroyHook() {
               controllerInstance.$onDestroy();
@@ -9831,7 +9829,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
                   $watch(interpolateFn, function interpolateFnWatchAction(newValue, oldValue) {
                     //special case for class attribute addition + removal
                     //so that class changes can tap into the animation
-                    //hooks provided by the $animate factory. Be sure to
+                    //hooks provided by the $animate service. Be sure to
                     //skip animations when the first digest occurs (when
                     //both the new and the old values are the same) since
                     //the CSS classes are the non-interpolated values
@@ -9949,7 +9947,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       forEach(bindings, function initializeBinding(definition, scopeName) {
         var attrName = definition.attrName,
         optional = definition.optional,
-            mode = definition.mode, // @, =, <, or &
+        mode = definition.mode, // @, =, <, or &
         lastValue,
         parentGet, parentSet, compare, removeWatch;
 
@@ -10807,7 +10805,7 @@ function $HttpProvider() {
    * @name $httpProvider#useApplyAsync
    * @description
    *
-   * Configure $http factory to combine processing of multiple http responses received at around
+   * Configure $http service to combine processing of multiple http responses received at around
    * the same time via {@link ng.$rootScope.Scope#$applyAsync $rootScope.$applyAsync}. This can result in
    * significant performance improvement for bigger applications that make many HTTP requests
    * concurrently (common during application bootstrap).
@@ -10835,7 +10833,7 @@ function $HttpProvider() {
    * @name $httpProvider#useLegacyPromiseExtensions
    * @description
    *
-   * Configure `$http` factory to return promises without the shorthand methods `success` and `error`.
+   * Configure `$http` service to return promises without the shorthand methods `success` and `error`.
    * This should be used to make sure that applications work without these methods.
    *
    * Defaults to true. If no value is specified, returns the current configured value.
@@ -11453,23 +11451,23 @@ function $HttpProvider() {
       config.paramSerializer = isString(config.paramSerializer) ?
           $injector.get(config.paramSerializer) : config.paramSerializer;
 
-        var requestInterceptors = [];
-        var responseInterceptors = [];
+      var requestInterceptors = [];
+      var responseInterceptors = [];
       var promise = $q.when(config);
 
       // apply interceptors
       forEach(reversedInterceptors, function(interceptor) {
         if (interceptor.request || interceptor.requestError) {
-            requestInterceptors.unshift(interceptor.request, interceptor.requestError);
+          requestInterceptors.unshift(interceptor.request, interceptor.requestError);
         }
         if (interceptor.response || interceptor.responseError) {
-            responseInterceptors.push(interceptor.response, interceptor.responseError);
+          responseInterceptors.push(interceptor.response, interceptor.responseError);
         }
       });
 
-        promise = chainInterceptors(promise, requestInterceptors);
-        promise = promise.then(serverRequest);
-        promise = chainInterceptors(promise, responseInterceptors);
+      promise = chainInterceptors(promise, requestInterceptors);
+      promise = promise.then(serverRequest);
+      promise = chainInterceptors(promise, responseInterceptors);
 
       if (useLegacyPromise) {
         promise.success = function(fn) {
@@ -11497,17 +11495,17 @@ function $HttpProvider() {
       return promise;
 
 
-        function chainInterceptors(promise, interceptors) {
-            for (var i = 0, ii = interceptors.length; i < ii;) {
-                var thenFn = interceptors[i++];
-                var rejectFn = interceptors[i++];
+      function chainInterceptors(promise, interceptors) {
+        for (var i = 0, ii = interceptors.length; i < ii;) {
+          var thenFn = interceptors[i++];
+          var rejectFn = interceptors[i++];
 
-                promise = promise.then(thenFn, rejectFn);
-            }
+          promise = promise.then(thenFn, rejectFn);
+        }
 
-            interceptors.length = 0;
+        interceptors.length = 0;
 
-            return promise;
+        return promise;
       }
 
       function executeHeaderFns(headers, config) {
@@ -11552,36 +11550,36 @@ function $HttpProvider() {
         return executeHeaderFns(reqHeaders, shallowCopy(config));
       }
 
-        function serverRequest(config) {
-            var headers = config.headers;
-            var reqData = transformData(config.data, headersGetter(headers), undefined, config.transformRequest);
+      function serverRequest(config) {
+        var headers = config.headers;
+        var reqData = transformData(config.data, headersGetter(headers), undefined, config.transformRequest);
 
-            // strip content-type if data is undefined
-            if (isUndefined(reqData)) {
-                forEach(headers, function (value, header) {
-                    if (lowercase(header) === 'content-type') {
-                        delete headers[header];
-                    }
-                });
+        // strip content-type if data is undefined
+        if (isUndefined(reqData)) {
+          forEach(headers, function(value, header) {
+            if (lowercase(header) === 'content-type') {
+              delete headers[header];
             }
-
-            if (isUndefined(config.withCredentials) && !isUndefined(defaults.withCredentials)) {
-                config.withCredentials = defaults.withCredentials;
-            }
-
-            // send request
-            return sendReq(config, reqData).then(transformResponse, transformResponse);
+          });
         }
 
-        function transformResponse(response) {
-            // make a copy since the response must be cacheable
-            var resp = extend({}, response);
-            resp.data = transformData(response.data, response.headers, response.status,
-                config.transformResponse);
-            return (isSuccess(response.status))
-                ? resp
-                : $q.reject(resp);
+        if (isUndefined(config.withCredentials) && !isUndefined(defaults.withCredentials)) {
+          config.withCredentials = defaults.withCredentials;
         }
+
+        // send request
+        return sendReq(config, reqData).then(transformResponse, transformResponse);
+      }
+
+      function transformResponse(response) {
+        // make a copy since the response must be cacheable
+        var resp = extend({}, response);
+        resp.data = transformData(response.data, response.headers, response.status,
+                                  config.transformResponse);
+        return (isSuccess(response.status))
+          ? resp
+          : $q.reject(resp);
+      }
     }
 
     $http.pendingRequests = [];
@@ -11918,8 +11916,8 @@ function $xhrFactoryProvider() {
  * $httpBackend} which can be trained with responses.
  */
 function $HttpBackendProvider() {
-    this.$get = ['$browser', '$jsonpCallbacks', '$document', '$xhrFactory', function ($browser, $jsonpCallbacks, $document, $xhrFactory) {
-        return createHttpBackend($browser, $xhrFactory, $browser.defer, $jsonpCallbacks, $document[0]);
+  this.$get = ['$browser', '$jsonpCallbacks', '$document', '$xhrFactory', function($browser, $jsonpCallbacks, $document, $xhrFactory) {
+    return createHttpBackend($browser, $xhrFactory, $browser.defer, $jsonpCallbacks, $document[0]);
   }];
 }
 
@@ -11929,13 +11927,13 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
     $browser.$$incOutstandingRequestCount();
     url = url || $browser.url();
 
-      if (lowercase(method) === 'jsonp') {
-          var callbackPath = callbacks.createCallback(url);
-          var jsonpDone = jsonpReq(url, callbackPath, function (status, text) {
-              // jsonpReq only ever sets status to 200 (OK), 404 (ERROR) or -1 (WAITING)
-              var response = (status === 200) && callbacks.getResponse(callbackPath);
-              completeRequest(callback, status, response, "", text);
-              callbacks.removeCallback(callbackPath);
+    if (lowercase(method) === 'jsonp') {
+      var callbackPath = callbacks.createCallback(url);
+      var jsonpDone = jsonpReq(url, callbackPath, function(status, text) {
+        // jsonpReq only ever sets status to 200 (OK), 404 (ERROR) or -1 (WAITING)
+        var response = (status === 200) && callbacks.getResponse(callbackPath);
+        completeRequest(callback, status, response, "", text);
+        callbacks.removeCallback(callbackPath);
       });
     } else {
 
@@ -12037,8 +12035,8 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
     }
   };
 
-    function jsonpReq(url, callbackPath, done) {
-        url = url.replace('JSON_CALLBACK', callbackPath);
+  function jsonpReq(url, callbackPath, done) {
+    url = url.replace('JSON_CALLBACK', callbackPath);
     // we can't use jQuery/jqLite here because jQuery does crazy stuff with script elements, e.g.:
     // - fetches local scripts via XHR and evals them
     // - adds and immediately removes script elements from the document
@@ -12056,7 +12054,7 @@ function createHttpBackend($browser, createXhr, $browserDefer, callbacks, rawDoc
       var text = "unknown";
 
       if (event) {
-          if (event.type === "load" && !callbacks.wasCalled(callbackPath)) {
+        if (event.type === "load" && !callbacks.wasCalled(callbackPath)) {
           event = { type: "error" };
         }
         text = event.type;
@@ -12564,7 +12562,7 @@ function $IntervalProvider() {
       *           });
       *         }])
       *       // Register the 'myCurrentTime' directive factory method.
-      *       factory
+      *       // We inject $interval and dateFilter service since the factory method is DI.
       *       .directive('myCurrentTime', ['$interval', 'dateFilter',
       *         function($interval, dateFilter) {
       *           // return the directive link function. (compile function not needed)
@@ -12687,80 +12685,80 @@ function $IntervalProvider() {
  * Override this service if you wish to customise where the callbacks are stored and
  * how they vary compared to the requested url.
  */
-var $jsonpCallbacksProvider = function () {
-    this.$get = ['$window', function ($window) {
-        var callbacks = $window.angular.callbacks;
-        var callbackMap = {};
+var $jsonpCallbacksProvider = function() {
+  this.$get = ['$window', function($window) {
+    var callbacks = $window.angular.callbacks;
+    var callbackMap = {};
 
-        function createCallback(callbackId) {
-            var callback = function (data) {
-                callback.data = data;
-                callback.called = true;
-            };
-            callback.id = callbackId;
-            return callback;
-        }
+    function createCallback(callbackId) {
+      var callback = function(data) {
+        callback.data = data;
+        callback.called = true;
+      };
+      callback.id = callbackId;
+      return callback;
+    }
 
-        return {
-            /**
-             * @ngdoc method
-             * @name $jsonpCallbacks#createCallback
-             * @param {string} url the url of the JSONP request
-             * @returns {string} the callback path to send to the server as part of the JSONP request
-             * @description
-             * {@link $httpBackend} calls this method to create a callback and get hold of the path to the callback
-             * to pass to the server, which will be used to call the callback with its payload in the JSONP response.
-             */
-            createCallback: function (url) {
-                var callbackId = '_' + (callbacks.$$counter++).toString(36);
-                var callbackPath = 'angular.callbacks.' + callbackId;
-                var callback = createCallback(callbackId);
-                callbackMap[callbackPath] = callbacks[callbackId] = callback;
-                return callbackPath;
-            },
-            /**
-             * @ngdoc method
-             * @name $jsonpCallbacks#wasCalled
-             * @param {string} callbackPath the path to the callback that was sent in the JSONP request
-             * @returns {boolean} whether the callback has been called, as a result of the JSONP response
-             * @description
-             * {@link $httpBackend} calls this method to find out whether the JSONP response actually called the
-             * callback that was passed in the request.
-             */
-            wasCalled: function (callbackPath) {
-                return callbackMap[callbackPath].called;
-            },
-            /**
-             * @ngdoc method
-             * @name $jsonpCallbacks#getResponse
-             * @param {string} callbackPath the path to the callback that was sent in the JSONP request
-             * @returns {*} the data received from the response via the registered callback
-             * @description
-             * {@link $httpBackend} calls this method to get hold of the data that was provided to the callback
-             * in the JSONP response.
-             */
-            getResponse: function (callbackPath) {
-                return callbackMap[callbackPath].data;
-            },
-            /**
-             * @ngdoc method
-             * @name $jsonpCallbacks#removeCallback
-             * @param {string} callbackPath the path to the callback that was sent in the JSONP request
-             * @description
-             * {@link $httpBackend} calls this method to remove the callback after the JSONP request has
-             * completed or timed-out.
-             */
-            removeCallback: function (callbackPath) {
-                var callback = callbackMap[callbackPath];
-                delete callbacks[callback.id];
-                delete callbackMap[callbackPath];
-            }
-        };
-    }];
+    return {
+      /**
+       * @ngdoc method
+       * @name $jsonpCallbacks#createCallback
+       * @param {string} url the url of the JSONP request
+       * @returns {string} the callback path to send to the server as part of the JSONP request
+       * @description
+       * {@link $httpBackend} calls this method to create a callback and get hold of the path to the callback
+       * to pass to the server, which will be used to call the callback with its payload in the JSONP response.
+       */
+      createCallback: function(url) {
+        var callbackId = '_' + (callbacks.$$counter++).toString(36);
+        var callbackPath = 'angular.callbacks.' + callbackId;
+        var callback = createCallback(callbackId);
+        callbackMap[callbackPath] = callbacks[callbackId] = callback;
+        return callbackPath;
+      },
+      /**
+       * @ngdoc method
+       * @name $jsonpCallbacks#wasCalled
+       * @param {string} callbackPath the path to the callback that was sent in the JSONP request
+       * @returns {boolean} whether the callback has been called, as a result of the JSONP response
+       * @description
+       * {@link $httpBackend} calls this method to find out whether the JSONP response actually called the
+       * callback that was passed in the request.
+       */
+      wasCalled: function(callbackPath) {
+        return callbackMap[callbackPath].called;
+      },
+      /**
+       * @ngdoc method
+       * @name $jsonpCallbacks#getResponse
+       * @param {string} callbackPath the path to the callback that was sent in the JSONP request
+       * @returns {*} the data received from the response via the registered callback
+       * @description
+       * {@link $httpBackend} calls this method to get hold of the data that was provided to the callback
+       * in the JSONP response.
+       */
+      getResponse: function(callbackPath) {
+        return callbackMap[callbackPath].data;
+      },
+      /**
+       * @ngdoc method
+       * @name $jsonpCallbacks#removeCallback
+       * @param {string} callbackPath the path to the callback that was sent in the JSONP request
+       * @description
+       * {@link $httpBackend} calls this method to remove the callback after the JSONP request has
+       * completed or timed-out.
+       */
+      removeCallback: function(callbackPath) {
+        var callback = callbackMap[callbackPath];
+        delete callbacks[callback.id];
+        delete callbackMap[callbackPath];
+      }
+    };
+  }];
 };
 
-    /**
-     * @ngdoc service
+/**
+ * @ngdoc service
  * @name $locale
  *
  * @description
@@ -12861,7 +12859,7 @@ function serverBase(url) {
  * This object is exposed as $location service when HTML5 mode is enabled and supported
  *
  * @constructor
- *factory {string} appBase application base URL
+ * @param {string} appBase application base URL
  * @param {string} appBaseNoFile application base URL stripped of any filename
  * @param {string} basePrefix url path prefix
  */
@@ -12937,7 +12935,7 @@ function LocationHtml5Url(appBase, appBaseNoFile, basePrefix) {
 /**
  * LocationHashbangUrl represents url
  * This object is exposed as $location service when developer doesn't opt into html5 mode.
- * It also serves factorybase class for html5 mode fallback on legacy browsers.
+ * It also serves as the base class for html5 mode fallback on legacy browsers.
  *
  * @constructor
  * @param {string} appBase application base URL
@@ -13049,7 +13047,7 @@ function LocationHashbangUrl(appBase, appBaseNoFile, hashPrefix) {
 /**
  * LocationHashbangUrl represents url
  * This object is exposed as $location service when html5 history api is enabled but the browser
- * does not factory it.
+ * does not support it.
  *
  * @constructor
  * @param {string} appBase application base URL
@@ -15780,7 +15778,7 @@ function $ParseProvider() {
    * @name $parseProvider#addLiteral
    * @description
    *
-   * Configure $parse service to add literal values that will be present as literal at exprefactory
+   * Configure $parse service to add literal values that will be present as literal at expressions.
    *
    * @param {string} literalName Token for the literal value. The literal name value must be a valid literal name.
    * @param {*} literalValue Value for this literal. All literal values must be primitives or `undefined`.
@@ -16631,29 +16629,29 @@ function qFactory(nextTick, exceptionHandler) {
     return deferred.promise;
   }
 
-    /**
-     * @ngdoc method
-     * @name $q#race
-     * @kind function
-     *
-     * @description
-     * Returns a promise that resolves or rejects as soon as one of those promises
-     * resolves or rejects, with the value or reason from that promise.
-     *
-     * @param {Array.<Promise>|Object.<Promise>} promises An array or hash of promises.
-     * @returns {Promise} a promise that resolves or rejects as soon as one of the `promises`
-     * resolves or rejects, with the value or reason from that promise.
-     */
+  /**
+   * @ngdoc method
+   * @name $q#race
+   * @kind function
+   *
+   * @description
+   * Returns a promise that resolves or rejects as soon as one of those promises
+   * resolves or rejects, with the value or reason from that promise.
+   *
+   * @param {Array.<Promise>|Object.<Promise>} promises An array or hash of promises.
+   * @returns {Promise} a promise that resolves or rejects as soon as one of the `promises`
+   * resolves or rejects, with the value or reason from that promise.
+   */
 
-    function race(promises) {
-        var deferred = defer();
+  function race(promises) {
+    var deferred = defer();
 
-        forEach(promises, function (promise) {
-            when(promise).then(deferred.resolve, deferred.reject);
-        });
+    forEach(promises, function(promise) {
+      when(promise).then(deferred.resolve, deferred.reject);
+    });
 
-        return deferred.promise;
-    }
+    return deferred.promise;
+  }
 
   var $Q = function Q(resolver) {
     if (!isFunction(resolver)) {
@@ -16684,7 +16682,7 @@ function qFactory(nextTick, exceptionHandler) {
   $Q.when = when;
   $Q.resolve = resolve;
   $Q.all = all;
-    $Q.race = race;
+  $Q.race = race;
 
   return $Q;
 }
@@ -16875,7 +16873,7 @@ function $RootScopeProvider() {
      *
      *
      * @param {Object.<string, function()>=} providers Map of service factory which need to be
-     *                               factory provided for the current scope. Defaults to {@link ng}.
+     *                                       provided for the current scope. Defaults to {@link ng}.
      * @param {Object.<string, *>=} instanceCache Provides pre-instantiated services which should
      *                              append/override services provided by `providers`. This is handy
      *                              when unit-testing and having the need to override a default
@@ -16883,7 +16881,7 @@ function $RootScopeProvider() {
      * @returns {Object} Newly created scope.
      *
      */
-factoryction Scope() {
+    function Scope() {
       this.$id = nextUid();
       this.$$phase = this.$parent = this.$$watchers =
                      this.$$nextSibling = this.$$prevSibling =
@@ -17703,7 +17701,7 @@ factoryction Scope() {
        * Any exceptions from the execution of the expression are forwarded to the
        * {@link ng.$exceptionHandler $exceptionHandler} service.
        *
-       * __Note:__ if this function is called outsidfactory`$digest` cycle, a new `$digest` cycle
+       * __Note:__ if this function is called outside of a `$digest` cycle, a new `$digest` cycle
        * will be scheduled. However, it is encouraged to always call code that changes the model
        * from within an `$apply` call. That includes code evaluated via `$evalAsync`.
        *
@@ -17766,7 +17764,7 @@ factoryction Scope() {
        *    {@link ng.$rootScope.Scope#$eval $eval()} method.
        * 2. Any exceptions from the execution of the expression are forwarded to the
        *    {@link ng.$exceptionHandler $exceptionHandler} service.
-       * 3. The {@link ng.$rootScope.Scope#$watch watch} listfactoryre fired immediately after the
+       * 3. The {@link ng.$rootScope.Scope#$watch watch} listeners are fired immediately after the
        *    expression was executed using the {@link ng.$rootScope.Scope#$digest $digest()} method.
        *
        *
@@ -17897,7 +17895,7 @@ factoryction Scope() {
        * onto the {@link ng.$exceptionHandler $exceptionHandler} service.
        *
        * @param {string} name Event name to emit.
-  factory@param {...*} args Optional one or more arguments which will be passed onto the event listeners.
+       * @param {...*} args Optional one or more arguments which will be passed onto the event listeners.
        * @return {Object} Event object (see {@link ng.$rootScope.Scope#$on}).
        */
       $emit: function(name, args) {
@@ -17968,7 +17966,8 @@ factoryction Scope() {
        * Any exception emitted from the {@link ng.$rootScope.Scope#$on listeners} will be passed
        * onto the {@link ng.$exceptionHandler $exceptionHandler} service.
        *
-       * @param {string} name Event name to broadcasfactory   * @param {...*} args Optional one or more arguments which will be passed onto the event listeners.
+       * @param {string} name Event name to broadcast.
+       * @param {...*} args Optional one or more arguments which will be passed onto the event listeners.
        * @return {Object} Event object, see {@link ng.$rootScope.Scope#$on}
        */
       $broadcast: function(name, args) {
@@ -18110,7 +18109,7 @@ factoryction Scope() {
 
 /**
  * @description
- * Private service to sanitize uris for links and images. Used by $compile and $sfactory.
+ * Private service to sanitize uris for links and images. Used by $compile and $sanitize.
  */
 function $$SanitizeUriProvider() {
   var aHrefSanitizationWhitelist = /^\s*(https?|ftp|mailto|tel|file):/,
@@ -18876,7 +18875,7 @@ function $SceProvider() {
    *
    * - trustAs(contextEnum, value)
    *     This method is used to tell the SCE service that the provided value is OK to use in the
-   *     contexts factoryed by contextEnum.  It must return an object that will be accepted by
+   *     contexts specified by contextEnum.  It must return an object that will be accepted by
    *     getTrusted() for a compatible contextEnum and return this value.
    *
    * - valueOf(value)
@@ -19355,7 +19354,7 @@ function $TemplateRequestProvider() {
    * @name $templateRequestProvider#httpOptions
    * @description
    * The options to be passed to the {@link $http} service when making the request.
-   * You can use this to override optfactorych as the "Accept" header for template requests.
+   * You can use this to override options such as the "Accept" header for template requests.
    *
    * The {@link $templateRequest} will set the `cache` and the `transformResponse` properties of the
    * options if not overridden here.
@@ -19655,13 +19654,14 @@ function $TimeoutProvider() {
 }
 
 // NOTE:  The usage of window and document instead of $window and $document here is
-// deliberate.  This service depends on the specific behavior of anchor nodes created by thfactoryowser (resolving and parsing URLs) that is unlikely to be provided by mock objects and
+// deliberate.  This service depends on the specific behavior of anchor nodes created by the
+// browser (resolving and parsing URLs) that is unlikely to be provided by mock objects and
 // cause us to break tests.  In addition, when the browser resolves a URL for XHR, it
 // doesn't know about mocked locations and resolves URLs to the real document - which is
 // exactly the behavior needed here.  There is little value is mocking these out for this
 // service.
 var urlParsingNode = window.document.createElement("a");
-var factoryrl = urlResolve(window.location.href);
+var originUrl = urlResolve(window.location.href);
 
 
 /**
@@ -20145,7 +20145,7 @@ function $FilterProvider($provide) {
  */
 
 function filterFilter() {
-    return function (array, expression, comparator, anyPropertyKey) {
+  return function(array, expression, comparator, anyPropertyKey) {
     if (!isArrayLike(array)) {
       if (array == null) {
         return array;
@@ -20154,7 +20154,7 @@ function filterFilter() {
       }
     }
 
-        anyPropertyKey = anyPropertyKey || '$';
+    anyPropertyKey = anyPropertyKey || '$';
     var expressionType = getTypeForFilter(expression);
     var predicateFn;
     var matchAgainstAnyProp;
@@ -20171,7 +20171,7 @@ function filterFilter() {
         //jshint -W086
       case 'object':
         //jshint +W086
-          predicateFn = createPredicateFn(expression, comparator, anyPropertyKey, matchAgainstAnyProp);
+        predicateFn = createPredicateFn(expression, comparator, anyPropertyKey, matchAgainstAnyProp);
         break;
       default:
         return array;
@@ -20182,8 +20182,8 @@ function filterFilter() {
 }
 
 // Helper functions for `filterFilter`
-    function createPredicateFn(expression, comparator, anyPropertyKey, matchAgainstAnyProp) {
-        var shouldMatchPrimitives = isObject(expression) && (anyPropertyKey in expression);
+function createPredicateFn(expression, comparator, anyPropertyKey, matchAgainstAnyProp) {
+  var shouldMatchPrimitives = isObject(expression) && (anyPropertyKey in expression);
   var predicateFn;
 
   if (comparator === true) {
@@ -20211,25 +20211,25 @@ function filterFilter() {
 
   predicateFn = function(item) {
     if (shouldMatchPrimitives && !isObject(item)) {
-        return deepCompare(item, expression[anyPropertyKey], comparator, anyPropertyKey, false);
+      return deepCompare(item, expression[anyPropertyKey], comparator, anyPropertyKey, false);
     }
-      return deepCompare(item, expression, comparator, anyPropertyKey, matchAgainstAnyProp);
+    return deepCompare(item, expression, comparator, anyPropertyKey, matchAgainstAnyProp);
   };
 
   return predicateFn;
 }
 
-    function deepCompare(actual, expected, comparator, anyPropertyKey, matchAgainstAnyProp, dontMatchWholeObject) {
+function deepCompare(actual, expected, comparator, anyPropertyKey, matchAgainstAnyProp, dontMatchWholeObject) {
   var actualType = getTypeForFilter(actual);
   var expectedType = getTypeForFilter(expected);
 
   if ((expectedType === 'string') && (expected.charAt(0) === '!')) {
-      return !deepCompare(actual, expected.substring(1), comparator, anyPropertyKey, matchAgainstAnyProp);
+    return !deepCompare(actual, expected.substring(1), comparator, anyPropertyKey, matchAgainstAnyProp);
   } else if (isArray(actual)) {
     // In case `actual` is an array, consider it a match
     // if ANY of it's items matches `expected`
     return actual.some(function(item) {
-        return deepCompare(item, expected, comparator, anyPropertyKey, matchAgainstAnyProp);
+      return deepCompare(item, expected, comparator, anyPropertyKey, matchAgainstAnyProp);
     });
   }
 
@@ -20238,11 +20238,11 @@ function filterFilter() {
       var key;
       if (matchAgainstAnyProp) {
         for (key in actual) {
-            if ((key.charAt(0) !== '$') && deepCompare(actual[key], expected, comparator, anyPropertyKey, true)) {
+          if ((key.charAt(0) !== '$') && deepCompare(actual[key], expected, comparator, anyPropertyKey, true)) {
             return true;
           }
         }
-          return dontMatchWholeObject ? false : deepCompare(actual, expected, comparator, anyPropertyKey, false);
+        return dontMatchWholeObject ? false : deepCompare(actual, expected, comparator, anyPropertyKey, false);
       } else if (expectedType === 'object') {
         for (key in expected) {
           var expectedVal = expected[key];
@@ -20250,9 +20250,9 @@ function filterFilter() {
             continue;
           }
 
-            var matchAnyProperty = key === anyPropertyKey;
+          var matchAnyProperty = key === anyPropertyKey;
           var actualVal = matchAnyProperty ? actual : actual[key];
-            if (!deepCompare(actualVal, expectedVal, comparator, anyPropertyKey, matchAnyProperty, matchAnyProperty)) {
+          if (!deepCompare(actualVal, expectedVal, comparator, anyPropertyKey, matchAnyProperty, matchAnyProperty)) {
             return false;
           }
         }
@@ -24248,7 +24248,7 @@ function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
 
     attr.$observe('min', function(val) {
       if (isDefined(val) && !isNumber(val)) {
-          val = parseFloat(val);
+        val = parseFloat(val);
       }
       minVal = isNumber(val) && !isNaN(val) ? val : undefined;
       // TODO(matsko): implement validateLater to reduce number of validations
@@ -24264,7 +24264,7 @@ function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
 
     attr.$observe('max', function(val) {
       if (isDefined(val) && !isNumber(val)) {
-          val = parseFloat(val);
+        val = parseFloat(val);
       }
       maxVal = isNumber(val) && !isNaN(val) ? val : undefined;
       // TODO(matsko): implement validateLater to reduce number of validations
@@ -29021,7 +29021,7 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
 
           for (var i = options.items.length - 1; i >= 0; i--) {
             var option = options.items[i];
-              if (isDefined(option.group)) {
+            if (isDefined(option.group)) {
               jqLiteRemove(option.element.parentNode);
             } else {
               jqLiteRemove(option.element);
@@ -29053,8 +29053,8 @@ var ngOptionsDirective = ['$compile', '$document', '$parse', function($compile, 
               listFragment.appendChild(groupElement);
 
               // Update the label on the group element
-                // "null" is special cased because of Safari
-                groupElement.label = option.group === null ? 'null' : option.group;
+              // "null" is special cased because of Safari
+              groupElement.label = option.group === null ? 'null' : option.group;
 
               // Store it for use later
               groupElementMap[option.group] = groupElement;
@@ -29314,7 +29314,9 @@ var ngPluralizeDirective = ['$locale', '$interpolate', '$log', function($locale,
           // If an explicit number rule such as 1, 2, 3... is defined, just use it.
           // Otherwise, check it against pluralization rules in $locale service.
           count = $locale.pluralCat(count - offset);
-        factory    // If both `count` and `lastCount` are NaN, we don't need to re-register a watch.
+        }
+
+        // If both `count` and `lastCount` are NaN, we don't need to re-register a watch.
         // In JS `NaN !== NaN`, so we have to explicitly check.
         if ((count !== lastCount) && !(countIsNaN && isNumber(lastCount) && isNaN(lastCount))) {
           watchRemover();
@@ -30653,63 +30655,63 @@ var ngSwitchDefaultDirective = ngDirective({
  * </example>
  */
 var ngTranscludeMinErr = minErr('ngTransclude');
-    var ngTranscludeDirective = ['$compile', function ($compile) {
-        return {
-            restrict: 'EAC',
-            terminal: true,
-            compile: function ngTranscludeCompile(tElement) {
+var ngTranscludeDirective = ['$compile', function($compile) {
+  return {
+    restrict: 'EAC',
+    terminal: true,
+    compile: function ngTranscludeCompile(tElement) {
 
-                // Remove and cache any original content to act as a fallback
-                var fallbackLinkFn = $compile(tElement.contents());
-                tElement.empty();
+      // Remove and cache any original content to act as a fallback
+      var fallbackLinkFn = $compile(tElement.contents());
+      tElement.empty();
 
-                return function ngTranscludePostLink($scope, $element, $attrs, controller, $transclude) {
+      return function ngTranscludePostLink($scope, $element, $attrs, controller, $transclude) {
 
-                    if (!$transclude) {
-                        throw ngTranscludeMinErr('orphan',
-                            'Illegal use of ngTransclude directive in the template! ' +
-                            'No parent directive that requires a transclusion found. ' +
-                            'Element: {0}',
-                            startingTag($element));
-                    }
+        if (!$transclude) {
+          throw ngTranscludeMinErr('orphan',
+          'Illegal use of ngTransclude directive in the template! ' +
+          'No parent directive that requires a transclusion found. ' +
+          'Element: {0}',
+          startingTag($element));
+        }
 
 
-                    // If the attribute is of the form: `ng-transclude="ng-transclude"` then treat it like the default
-                    if ($attrs.ngTransclude === $attrs.$attr.ngTransclude) {
-                        $attrs.ngTransclude = '';
-                    }
-                    var slotName = $attrs.ngTransclude || $attrs.ngTranscludeSlot;
+        // If the attribute is of the form: `ng-transclude="ng-transclude"` then treat it like the default
+        if ($attrs.ngTransclude === $attrs.$attr.ngTransclude) {
+          $attrs.ngTransclude = '';
+        }
+        var slotName = $attrs.ngTransclude || $attrs.ngTranscludeSlot;
 
-                    // If the slot is required and no transclusion content is provided then this call will throw an error
-                    $transclude(ngTranscludeCloneAttachFn, null, slotName);
+        // If the slot is required and no transclusion content is provided then this call will throw an error
+        $transclude(ngTranscludeCloneAttachFn, null, slotName);
 
-                    // If the slot is optional and no transclusion content is provided then use the fallback content
-                    if (slotName && !$transclude.isSlotFilled(slotName)) {
-                        useFallbackContent();
-                    }
+        // If the slot is optional and no transclusion content is provided then use the fallback content
+        if (slotName && !$transclude.isSlotFilled(slotName)) {
+          useFallbackContent();
+        }
 
-                    function ngTranscludeCloneAttachFn(clone, transcludedScope) {
-                        if (clone.length) {
-                            $element.append(clone);
-                        } else {
-                            useFallbackContent();
-                            // There is nothing linked against the transcluded scope since no content was available,
-                            // so it should be safe to clean up the generated scope.
-                            transcludedScope.$destroy();
-                        }
-                    }
+        function ngTranscludeCloneAttachFn(clone, transcludedScope) {
+          if (clone.length) {
+            $element.append(clone);
+          } else {
+            useFallbackContent();
+            // There is nothing linked against the transcluded scope since no content was available,
+            // so it should be safe to clean up the generated scope.
+            transcludedScope.$destroy();
+          }
+        }
 
-                    function useFallbackContent() {
-                        // Since this is the fallback content rather than the transcluded content,
-                        // we link against the scope of this directive rather than the transcluded scope
-                        fallbackLinkFn($scope, function (clone) {
-                            $element.append(clone);
-                        });
-                    }
-                };
-            }
-        };
-    }];
+        function useFallbackContent() {
+          // Since this is the fallback content rather than the transcluded content,
+          // we link against the scope of this directive rather than the transcluded scope
+          fallbackLinkFn($scope, function(clone) {
+            $element.append(clone);
+          });
+        }
+      };
+    }
+  };
+}];
 
 /**
  * @ngdoc directive

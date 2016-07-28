@@ -350,9 +350,7 @@
     assert.ok(_.every([true, true, true], _.identity), 'every true values');
     assert.notOk(_.every([true, false, true], _.identity), 'one false value');
     assert.ok(_.every([0, 10, 28], function(num){ return num % 2 === 0; }), 'even numbers');
-    assert.notOk(_.every([0, 11, 28], function (num) {
-      return num % 2 === 0;
-    }), 'an odd number');
+    assert.notOk(_.every([0, 11, 28], function(num){ return num % 2 === 0; }), 'an odd number');
     assert.strictEqual(_.every([1], _.identity), true, 'cast to boolean - true');
     assert.strictEqual(_.every([0], _.identity), false, 'cast to boolean - false');
     assert.notOk(_.every([void 0, void 0, void 0], _.identity), 'works with arrays of undefined');
@@ -381,9 +379,7 @@
     assert.ok(_.some([false, false, true]), 'one true value');
     assert.ok(_.some([null, 0, 'yes', false]), 'a string');
     assert.notOk(_.some([null, 0, '', false]), 'falsy values');
-    assert.notOk(_.some([1, 11, 29], function (num) {
-      return num % 2 === 0;
-    }), 'all odd numbers');
+    assert.notOk(_.some([1, 11, 29], function(num){ return num % 2 === 0; }), 'all odd numbers');
     assert.ok(_.some([1, 10, 29], function(num){ return num % 2 === 0; }), 'an even number');
     assert.strictEqual(_.some([1], _.identity), true, 'cast to boolean - true');
     assert.strictEqual(_.some([0], _.identity), false, 'cast to boolean - false');
@@ -696,9 +692,7 @@
     assert.deepEqual(grouped['5'], ['three', 'seven', 'eight']);
 
     var context = {};
-    _.groupBy([{}], function () {
-      assert.strictEqual(this, context);
-    }, context);
+    _.groupBy([{}], function(){ assert.strictEqual(this, context); }, context);
 
     grouped = _.groupBy([4.2, 6.1, 6.4], function(num) {
       return Math.floor(num) > 4 ? 'hasOwnProperty' : 'constructor';
@@ -707,9 +701,7 @@
     assert.equal(grouped.hasOwnProperty.length, 2);
 
     var array = [{}];
-    _.groupBy(array, function (value, index, obj) {
-      assert.strictEqual(obj, array);
-    });
+    _.groupBy(array, function(value, index, obj){ assert.strictEqual(obj, array); });
 
     array = [1, 2, 1, 2, 3];
     grouped = _.groupBy(array);
@@ -755,9 +747,7 @@
     assert.equal(grouped['5'], 3);
 
     var context = {};
-    _.countBy([{}], function () {
-      assert.strictEqual(this, context);
-    }, context);
+    _.countBy([{}], function(){ assert.strictEqual(this, context); }, context);
 
     grouped = _.countBy([4.2, 6.1, 6.4], function(num) {
       return Math.floor(num) > 4 ? 'hasOwnProperty' : 'constructor';
@@ -766,9 +756,7 @@
     assert.equal(grouped.hasOwnProperty, 2);
 
     var array = [{}];
-    _.countBy(array, function (value, index, obj) {
-      assert.strictEqual(obj, array);
-    });
+    _.countBy(array, function(value, index, obj){ assert.strictEqual(obj, array); });
 
     array = [1, 2, 1, 2, 3];
     grouped = _.countBy(array);

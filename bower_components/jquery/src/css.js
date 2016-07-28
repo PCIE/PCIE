@@ -17,10 +17,10 @@ define( [
 	"./core/init",
 	"./core/ready",
 	"./selector" // contains
-], function (jQuery, pnum, access, rmargin, document, rcssNum, rnumnonpx, cssExpand,
-             getStyles, swap, curCSS, adjustCSS, addGetHookIf, support) {
+], function( jQuery, pnum, access, rmargin, document, rcssNum, rnumnonpx, cssExpand,
+	getStyles, swap, curCSS, adjustCSS, addGetHookIf, support ) {
 
-    "use strict";
+"use strict";
 
 var
 
@@ -34,7 +34,7 @@ var
 		fontWeight: "400"
 	},
 
-    cssPrefixes = ["Webkit", "Moz", "ms"],
+	cssPrefixes = [ "Webkit", "Moz", "ms" ],
 	emptyStyle = document.createElement( "div" ).style;
 
 // Return a css property mapped to a potentially vendor prefixed property
@@ -116,17 +116,17 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
 function getWidthOrHeight( elem, name, extra ) {
 
 	// Start with offset property, which is equivalent to the border-box value
-    var val,
-        valueIsBorderBox = true,
+	var val,
+		valueIsBorderBox = true,
 		styles = getStyles( elem ),
 		isBorderBox = jQuery.css( elem, "boxSizing", false, styles ) === "border-box";
 
-    // Support: IE <=11 only
-    // Running getBoundingClientRect on a disconnected node
-    // in IE throws an error.
-    if (elem.getClientRects().length) {
-        val = elem.getBoundingClientRect()[name];
-    }
+	// Support: IE <=11 only
+	// Running getBoundingClientRect on a disconnected node
+	// in IE throws an error.
+	if ( elem.getClientRects().length ) {
+		val = elem.getBoundingClientRect()[ name ];
+	}
 
 	// Some non-html elements return undefined for offsetWidth, so check for null/undefined
 	// svg - https://bugzilla.mozilla.org/show_bug.cgi?id=649285
@@ -316,13 +316,13 @@ jQuery.each( [ "height", "width" ], function( i, name ) {
 				// but it must have a current display style that would benefit
 				return rdisplayswap.test( jQuery.css( elem, "display" ) ) &&
 
-                // Support: Safari 8+
-                // Table columns in Safari have non-zero offsetWidth & zero
-                // getBoundingClientRect().width unless display is changed.
-                // Support: IE <=11 only
-                // Running getBoundingClientRect on a disconnected node
-                // in IE throws an error.
-                ( !elem.getClientRects().length || !elem.getBoundingClientRect().width ) ?
+					// Support: Safari 8+
+					// Table columns in Safari have non-zero offsetWidth & zero
+					// getBoundingClientRect().width unless display is changed.
+					// Support: IE <=11 only
+					// Running getBoundingClientRect on a disconnected node
+					// in IE throws an error.
+					( !elem.getClientRects().length || !elem.getBoundingClientRect().width ) ?
 						swap( elem, cssShow, function() {
 							return getWidthOrHeight( elem, name, extra );
 						} ) :

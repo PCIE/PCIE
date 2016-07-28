@@ -1,4 +1,4 @@
-(function (QUnit) {
+(function(QUnit) {
 
   var a, b, c, d, e, col, otherCol;
 
@@ -661,10 +661,10 @@
     assert.equal(coll.one, 1);
   });
 
-  QUnit.test('preinitialize', function (assert) {
+  QUnit.test('preinitialize', function(assert) {
     assert.expect(1);
     var Collection = Backbone.Collection.extend({
-      preinitialize: function () {
+      preinitialize: function() {
         this.one = 1;
       }
     });
@@ -672,10 +672,10 @@
     assert.equal(coll.one, 1);
   });
 
-  QUnit.test('preinitialize occurs before the collection is set up', function (assert) {
+  QUnit.test('preinitialize occurs before the collection is set up', function(assert) {
     assert.expect(2);
     var Collection = Backbone.Collection.extend({
-      preinitialize: function () {
+      preinitialize: function() {
         assert.notEqual(this.model, FooModel);
       }
     });

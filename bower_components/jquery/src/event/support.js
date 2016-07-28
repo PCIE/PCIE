@@ -2,7 +2,7 @@ define( [
 	"../var/support"
 ], function( support ) {
 
-    "use strict";
+"use strict";
 
 support.focusin = "onfocusin" in window;
 

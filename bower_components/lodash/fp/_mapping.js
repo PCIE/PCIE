@@ -202,20 +202,20 @@ exports.methodRearg = {
 
 /** Used to map method names to spread configs. */
 exports.methodSpread = {
-  'assignAll': {'start': 0},
-  'assignAllWith': {'afterRearg': true, 'start': 1},
-  'assignInAll': {'start': 0},
-  'assignInAllWith': {'afterRearg': true, 'start': 1},
-  'defaultsAll': {'start': 0},
-  'defaultsDeepAll': {'start': 0},
-  'invokeArgs': {'start': 2},
-  'invokeArgsMap': {'start': 2},
-  'mergeAll': {'start': 0},
-  'mergeAllWith': {'afterRearg': true, 'start': 1},
-  'partial': {'start': 1},
-  'partialRight': {'start': 1},
-  'without': {'start': 1},
-  'zipAll': {'start': 0}
+  'assignAll': { 'start': 0 },
+  'assignAllWith': { 'afterRearg': true, 'start': 1 },
+  'assignInAll': { 'start': 0 },
+  'assignInAllWith': { 'afterRearg': true, 'start': 1 },
+  'defaultsAll': { 'start': 0 },
+  'defaultsDeepAll': { 'start': 0 },
+  'invokeArgs': { 'start': 2 },
+  'invokeArgsMap': { 'start': 2 },
+  'mergeAll': { 'start': 0 },
+  'mergeAllWith': { 'afterRearg': true, 'start': 1 },
+  'partial': { 'start': 1 },
+  'partialRight': { 'start': 1 },
+  'without': { 'start': 1 },
+  'zipAll': { 'start': 0 }
 };
 
 /** Used to identify methods which mutate arrays or objects. */

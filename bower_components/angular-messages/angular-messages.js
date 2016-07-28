@@ -5,10 +5,10 @@
  */
 (function(window, angular) {'use strict';
 
-    var forEach;
-    var isArray;
-    var isString;
-    var jqLite;
+var forEach;
+var isArray;
+var isString;
+var jqLite;
 
 /**
  * @ngdoc module
@@ -265,12 +265,12 @@
  * {@link ngAnimate Click here} to learn how to use JavaScript animations or to learn more about ngAnimate.
  */
 angular.module('ngMessages', [], function initAngularHelpers() {
-    // Access helpers from angular core.
-    // Do it inside a `config` block to ensure `window.angular` is available.
-    forEach = angular.forEach;
-    isArray = angular.isArray;
-    isString = angular.isString;
-    jqLite = angular.element;
+  // Access helpers from angular core.
+  // Do it inside a `config` block to ensure `window.angular` is available.
+  forEach = angular.forEach;
+  isArray = angular.isArray;
+  isString = angular.isString;
+  jqLite = angular.element;
 })
 
   /**

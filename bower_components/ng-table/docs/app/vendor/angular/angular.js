@@ -1505,7 +1505,7 @@ function reloadWithDebugInfo() {
  * @name angular.getTestability
  * @module ng
  * @description
- * Get the testability factory for the instance of Angular on the given
+ * Get the testability service for the instance of Angular on the given
  * element.
  * @param {DOMElement} element DOM element which is the root of angular application.
  */
@@ -1820,9 +1820,9 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#provider
            * @module ng
-           * @param {string} name factory name
+           * @param {string} name service name
            * @param {Function} providerType Construction function for creating new instance of the
-           *                                factory.
+           *                                service.
            * @description
            * See {@link auto.$provide#provider $provide.provider()}.
            */
@@ -1832,8 +1832,8 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#factory
            * @module ng
-           * @param {string} name factory name
-           * @param {Function} providerFunction Function for creating new instance of the factory.
+           * @param {string} name service name
+           * @param {Function} providerFunction Function for creating new instance of the service.
            * @description
            * See {@link auto.$provide#factory $provide.factory()}.
            */
@@ -1843,10 +1843,10 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#service
            * @module ng
-           * @param {string} name factory name
+           * @param {string} name service name
            * @param {Function} constructor A constructor function that will be instantiated.
            * @description
-           * See {@link auto.$provide#service $provide.factory()}.
+           * See {@link auto.$provide#service $provide.service()}.
            */
           service: invokeLater('$provide', 'service'),
 
@@ -1854,7 +1854,7 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#value
            * @module ng
-           * @param {string} name factory name
+           * @param {string} name service name
            * @param {*} object Service instance object.
            * @description
            * See {@link auto.$provide#value $provide.value()}.
@@ -1886,7 +1886,7 @@ function setupModuleLoader(window) {
            *
            *
            * Defines an animation hook that can be later used with
-           * {@link ngAnimate.$animate $animate} factory and directives that use this factory.
+           * {@link ngAnimate.$animate $animate} service and directives that use this service.
            *
            * ```js
            * module.animation('.animation-name', function($inject1, $inject2) {
@@ -1947,7 +1947,7 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#config
            * @module ng
-           * @param {Function} configFn Execute this function on module load. Useful for factory
+           * @param {Function} configFn Execute this function on module load. Useful for service
            *    configuration.
            * @description
            * Use this method to register work which needs to be performed on module loading.
@@ -3285,7 +3285,7 @@ forEach({
 });
 
 
-// Provider for private $$jqLite factory
+// Provider for private $$jqLite service
 function $$jqLiteProvider() {
   this.$get = function $$jqLite() {
     return extend(JQLite, {
@@ -4186,7 +4186,7 @@ function createInjector(modulesToLoad, strictDi) {
         key = $inject[i];
         if (typeof key !== 'string') {
           throw $injectorMinErr('itkn',
-                  'Incorrect injection token! Expected factory name as string, got {0}', key);
+                  'Incorrect injection token! Expected service name as string, got {0}', key);
         }
         args.push(
           locals && locals.hasOwnProperty(key)
@@ -4525,7 +4525,7 @@ var $AnimateProvider = ['$provide', function($provide) {
    *
    *   * `eventFn`: `function(Element, doneFunction)` The element to animate, the `doneFunction`
    *   must be called once the element animation is complete. If a function is returned then the
-   *   animation factory will use this function to cancel the animation whenever a cancel event is
+   *   animation service will use this function to cancel the animation whenever a cancel event is
    *   triggered.
    *
    *
@@ -4895,7 +4895,7 @@ function $$AsyncCallbackProvider() {
  * @param {object} window The global window object.
  * @param {object} document jQuery wrapped document.
  * @param {object} $log window.console or an object with the same interface.
- * @param {object} $sniffer $sniffer factory
+ * @param {object} $sniffer $sniffer service
  */
 function Browser(window, document, $log, $sniffer) {
   var self = this,
@@ -5023,8 +5023,8 @@ function Browser(window, document, $log, $sniffer) {
    * location.href/location.replace is used.
    * Returns its own instance to allow chaining
    *
-   * NOTE: this api is intended for use only by the $location factory. Please use the
-   * {@link ng.$location $location factory} to change url.
+   * NOTE: this api is intended for use only by the $location service. Please use the
+   * {@link ng.$location $location service} to change url.
    *
    * @param {string} url New url (when used as setter)
    * @param {boolean=} replace Should new url replace current history record?
@@ -5157,8 +5157,8 @@ function Browser(window, document, $log, $sniffer) {
    *
    * The listener gets called with new url as parameter.
    *
-   * NOTE: this api is intended for use only by the $location factory. Please use the
-   * {@link ng.$location $location factory} to monitor url changes in angular apps.
+   * NOTE: this api is intended for use only by the $location service. Please use the
+   * {@link ng.$location $location service} to monitor url changes in angular apps.
    *
    * @param {function(string)} listener Listener function to be called when url changes.
    * @return {function(string)} Returns the registered listener fn - handy if the fn is anonymous.
@@ -5230,7 +5230,7 @@ function Browser(window, document, $log, $sniffer) {
    *
    * @description
    * The cookies method provides a 'private' low level access to browser cookies.
-   * It is not meant to be used directly, use the $cookie factory instead.
+   * It is not meant to be used directly, use the $cookie service instead.
    *
    * The return values vary depending on the arguments that the method was called with as follows:
    *
@@ -8147,7 +8147,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
                   $watch(interpolateFn, function interpolateFnWatchAction(newValue, oldValue) {
                     //special case for class attribute addition + removal
                     //so that class changes can tap into the animation
-                    //hooks provided by the $animate factory. Be sure to
+                    //hooks provided by the $animate service. Be sure to
                     //skip animations when the first digest occurs (when
                     //both the new and the old values are the same) since
                     //the CSS classes are the non-interpolated values
@@ -8775,7 +8775,7 @@ function $HttpProvider() {
    * @name $httpProvider#useApplyAsync
    * @description
    *
-   * Configure $http factory to combine processing of multiple http responses received at around
+   * Configure $http service to combine processing of multiple http responses received at around
    * the same time via {@link ng.$rootScope.Scope#$applyAsync $rootScope.$applyAsync}. This can result in
    * significant performance improvement for bigger applications that make many HTTP requests
    * concurrently (common during application bootstrap).
@@ -10358,7 +10358,7 @@ function $IntervalProvider() {
       *           });
       *         }])
       *       // Register the 'myCurrentTime' directive factory method.
-      *       factory
+      *       // We inject $interval and dateFilter service since the factory method is DI.
       *       .directive('myCurrentTime', ['$interval', 'dateFilter',
       *         function($interval, dateFilter) {
       *           // return the directive link function. (compile function not needed)
@@ -10627,7 +10627,7 @@ function serverBase(url) {
  * This object is exposed as $location service when HTML5 mode is enabled and supported
  *
  * @constructor
- *factory {string} appBase application base URL
+ * @param {string} appBase application base URL
  * @param {string} basePrefix url path prefix
  */
 function LocationHtml5Url(appBase, basePrefix) {
@@ -10703,7 +10703,7 @@ function LocationHtml5Url(appBase, basePrefix) {
 /**
  * LocationHashbangUrl represents url
  * This object is exposed as $location service when developer doesn't opt into html5 mode.
- * It also serves factorybase class for html5 mode fallback on legacy browsers.
+ * It also serves as the base class for html5 mode fallback on legacy browsers.
  *
  * @constructor
  * @param {string} appBase application base URL
@@ -10807,7 +10807,7 @@ function LocationHashbangUrl(appBase, hashPrefix) {
 /**
  * LocationHashbangUrl represents url
  * This object is exposed as $location service when html5 history api is enabled but the browser
- * does not factory it.
+ * does not support it.
  *
  * @constructor
  * @param {string} appBase application base URL
@@ -13667,7 +13667,7 @@ function $RootScopeProvider() {
      *
      *
      * @param {Object.<string, function()>=} providers Map of service factory which need to be
-     *                               factory provided for the current scope. Defaults to {@link ng}.
+     *                                       provided for the current scope. Defaults to {@link ng}.
      * @param {Object.<string, *>=} instanceCache Provides pre-instantiated services which should
      *                              append/override services provided by `providers`. This is handy
      *                              when unit-testing and having the need to override a default
@@ -13675,7 +13675,7 @@ function $RootScopeProvider() {
      * @returns {Object} Newly created scope.
      *
      */
-factoryction Scope() {
+    function Scope() {
       this.$id = nextUid();
       this.$$phase = this.$parent = this.$$watchers =
                      this.$$nextSibling = this.$$prevSibling =
@@ -14485,7 +14485,7 @@ factoryction Scope() {
        * Any exceptions from the execution of the expression are forwarded to the
        * {@link ng.$exceptionHandler $exceptionHandler} service.
        *
-       * __Note:__ if this function is called outsidfactory`$digest` cycle, a new `$digest` cycle
+       * __Note:__ if this function is called outside of a `$digest` cycle, a new `$digest` cycle
        * will be scheduled. However, it is encouraged to always call code that changes the model
        * from within an `$apply` call. That includes code evaluated via `$evalAsync`.
        *
@@ -14548,7 +14548,7 @@ factoryction Scope() {
        *    {@link ng.$rootScope.Scope#$eval $eval()} method.
        * 2. Any exceptions from the execution of the expression are forwarded to the
        *    {@link ng.$exceptionHandler $exceptionHandler} service.
-       * 3. The {@link ng.$rootScope.Scope#$watch watch} listfactoryre fired immediately after the
+       * 3. The {@link ng.$rootScope.Scope#$watch watch} listeners are fired immediately after the
        *    expression was executed using the {@link ng.$rootScope.Scope#$digest $digest()} method.
        *
        *
@@ -14675,7 +14675,7 @@ factoryction Scope() {
        * onto the {@link ng.$exceptionHandler $exceptionHandler} service.
        *
        * @param {string} name Event name to emit.
-  factory@param {...*} args Optional one or more arguments which will be passed onto the event listeners.
+       * @param {...*} args Optional one or more arguments which will be passed onto the event listeners.
        * @return {Object} Event object (see {@link ng.$rootScope.Scope#$on}).
        */
       $emit: function(name, args) {
@@ -14746,7 +14746,8 @@ factoryction Scope() {
        * Any exception emitted from the {@link ng.$rootScope.Scope#$on listeners} will be passed
        * onto the {@link ng.$exceptionHandler $exceptionHandler} service.
        *
-       * @param {string} name Event name to broadcasfactory   * @param {...*} args Optional one or more arguments which will be passed onto the event listeners.
+       * @param {string} name Event name to broadcast.
+       * @param {...*} args Optional one or more arguments which will be passed onto the event listeners.
        * @return {Object} Event object, see {@link ng.$rootScope.Scope#$on}
        */
       $broadcast: function(name, args) {
@@ -14866,7 +14867,7 @@ factoryction Scope() {
 
 /**
  * @description
- * Private service to sanitize uris for links and images. Used by $compile and $sfactory.
+ * Private service to sanitize uris for links and images. Used by $compile and $sanitize.
  */
 function $$SanitizeUriProvider() {
   var aHrefSanitizationWhitelist = /^\s*(https?|ftp|mailto|tel|file):/,
@@ -15625,7 +15626,7 @@ function $SceProvider() {
    *
    * - trustAs(contextEnum, value)
    *     This method is used to tell the SCE service that the provided value is OK to use in the
-   *     contexts factoryed by contextEnum.  It must return an object that will be accepted by
+   *     contexts specified by contextEnum.  It must return an object that will be accepted by
    *     getTrusted() for a compatible contextEnum and return this value.
    *
    * - valueOf(value)
@@ -16340,13 +16341,14 @@ function $TimeoutProvider() {
 }
 
 // NOTE:  The usage of window and document instead of $window and $document here is
-// deliberate.  This service depends on the specific behavior of anchor nodes created by thfactoryowser (resolving and parsing URLs) that is unlikely to be provided by mock objects and
+// deliberate.  This service depends on the specific behavior of anchor nodes created by the
+// browser (resolving and parsing URLs) that is unlikely to be provided by mock objects and
 // cause us to break tests.  In addition, when the browser resolves a URL for XHR, it
 // doesn't know about mocked locations and resolves URLs to the real document - which is
 // exactly the behavior needed here.  There is little value is mocking these out for this
 // service.
 var urlParsingNode = document.createElement("a");
-var originUfactorylResolve(window.location.href);
+var originUrl = urlResolve(window.location.href);
 
 
 /**
@@ -24172,7 +24174,9 @@ var ngPluralizeDirective = ['$locale', '$interpolate', function($locale, $interp
           // If an explicit number rule such as 1, 2, 3... is defined, just use it.
           // Otherwise, check it against pluralization rules in $locale service.
           count = $locale.pluralCat(count - offset);
-        factory    // If both `count` and `lastCount` are NaN, we don't need to re-register a watch.
+        }
+
+        // If both `count` and `lastCount` are NaN, we don't need to re-register a watch.
         // In JS `NaN !== NaN`, so we have to exlicitly check.
         if ((count !== lastCount) && !(countIsNaN && isNaN(lastCount))) {
           watchRemover();

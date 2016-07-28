@@ -1,4 +1,4 @@
-<div id="mainFooter">
+<div id="mainFooter" ng-controller="footerCtrl">
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-6">
@@ -13,29 +13,10 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <h3><a href="#">A propos de PCIE</a></h3>
+            <div class="col-md-3 col-sm-6" ng-repeat="c in footerMenu">
+                <h3><a href="#">{{ c.categorie }}</a></h3>
                 <ul class="list-unstyled">
-                    <li><a href="#">Qui sommes nous ?</a></li>
-                    <li><a href="#">Nos Valeurs</a></li>
-                    <li><a href="#">Notre équipe</a></li>
-                    <li><a href="#">Localisation</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <h3><a href="#">Nos Services</a></h3>
-                <ul class="list-unstyled">
-                    <li><a href="#">Secteurs d'activité</a></li>
-                    <li><a href="#">Nos partenaires</a></li>
-                    <li><a href="#">Notre Approche</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <h3><a href="#">Carrières</a></h3>
-                <ul class="list-unstyled">
-                    <li><a href="#">Travailler chez PCIE</a></li>
-                    <li><a href="#">Offre d'emploi</a></li>
-                    <li><a href="#">Espace candidat</a></li>
+                    <li ng-repeat="sc in c.souscategorie"><a href="#">{{ sc.nom }}</a></li>
                 </ul>
             </div>
         </div>

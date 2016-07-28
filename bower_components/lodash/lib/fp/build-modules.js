@@ -6,8 +6,8 @@ var _ = require('lodash'),
     path = require('path');
 
 var file = require('../common/file'),
-  mapping = require('../common/mapping'),
-  util = require('../common/util');
+    mapping = require('../common/mapping'),
+    util = require('../common/util');
 
 var templatePath = path.join(__dirname, 'template/modules'),
     template = file.globTemplate(path.join(templatePath, '*.jst'));

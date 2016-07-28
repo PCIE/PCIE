@@ -4,10 +4,10 @@ define( [
 	"../ajax",
 	"../traversing",
 	"../manipulation",
-    "../selector"
+	"../selector"
 ], function( jQuery ) {
 
-    "use strict";
+"use strict";
 
 /**
  * Load a url into a page

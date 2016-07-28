@@ -5,7 +5,7 @@ define( [
 	"./data/var/dataUser"
 ], function( jQuery, access, dataPriv, dataUser ) {
 
-    "use strict";
+"use strict";
 
 //	Implementation Summary
 //
@@ -37,7 +37,7 @@ function dataAttr( elem, key, data ) {
 
 					// Only convert to a number if it doesn't change the string
 					+data + "" === data ? +data :
-                        rbrace.test(data) ? JSON.parse(data) :
+					rbrace.test( data ) ? JSON.parse( data ) :
 					data;
 			} catch ( e ) {}
 
@@ -89,7 +89,7 @@ jQuery.fn.extend( {
 					i = attrs.length;
 					while ( i-- ) {
 
-                        // Support: IE 11 only
+						// Support: IE 11 only
 						// The attrs elements can be null (#14894)
 						if ( attrs[ i ] ) {
 							name = attrs[ i ].name;
@@ -114,7 +114,7 @@ jQuery.fn.extend( {
 		}
 
 		return access( this, function( value ) {
-            var data;
+			var data;
 
 			// The calling jQuery object (element matches) is not empty
 			// (and therefore has an element appears at this[ 0 ]) and the
@@ -124,15 +124,15 @@ jQuery.fn.extend( {
 			if ( elem && value === undefined ) {
 
 				// Attempt to get data from the cache
-                // The key will always be camelCased in Data
-                data = dataUser.get(elem, key);
+				// The key will always be camelCased in Data
+				data = dataUser.get( elem, key );
 				if ( data !== undefined ) {
 					return data;
 				}
 
 				// Attempt to "discover" the data in
 				// HTML5 custom data-* attrs
-                data = dataAttr(elem, key);
+				data = dataAttr( elem, key );
 				if ( data !== undefined ) {
 					return data;
 				}
@@ -144,8 +144,8 @@ jQuery.fn.extend( {
 			// Set the data...
 			this.each( function() {
 
-                // We always store the camelCased key
-                dataUser.set(this, key, value);
+				// We always store the camelCased key
+				dataUser.set( this, key, value );
 			} );
 		}, null, value, arguments.length > 1, null, true );
 	},

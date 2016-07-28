@@ -5,7 +5,7 @@ var _ = require('lodash'),
     path = require('path');
 
 var file = require('../common/file'),
-  util = require('../common/util');
+    util = require('../common/util');
 
 var basePath = path.join(__dirname, '..', '..'),
     distPath = path.join(basePath, 'dist');

@@ -5,8 +5,8 @@ var _ = require('lodash'),
     path = require('path');
 
 var file = require('../common/file'),
-  mapping = require('../common/mapping'),
-  util = require('../common/util');
+    mapping = require('../common/mapping'),
+    util = require('../common/util');
 
 var templatePath = path.join(__dirname, 'template/doc'),
     template = file.globTemplate(path.join(templatePath, '*.jst'));
@@ -28,7 +28,7 @@ var templateData = {
  */
 function toArgOrder(indexes) {
   var reordered = [];
-  _.each(indexes, function (newIndex, index) {
+  _.each(indexes, function(newIndex, index) {
     reordered[newIndex] = argNames[index];
   });
   return '`(' + reordered.join(', ') + ')`';

@@ -29,7 +29,7 @@ var CSS_PREFIX = '', TRANSITION_PROP, TRANSITIONEND_EVENT, ANIMATION_PROP, ANIMA
 // Also, the only modern browser that uses vendor prefixes for transitions/keyframes is webkit
 // therefore there is no reason to test anymore for other vendor prefixes:
 // http://caniuse.com/#search=transition
-    if ((window.ontransitionend === void 0) && (window.onwebkittransitionend !== void 0)) {
+if ((window.ontransitionend === void 0) && (window.onwebkittransitionend !== void 0)) {
   CSS_PREFIX = '-webkit-';
   TRANSITION_PROP = 'WebkitTransition';
   TRANSITIONEND_EVENT = 'webkitTransitionEnd transitionend';
@@ -38,7 +38,7 @@ var CSS_PREFIX = '', TRANSITION_PROP, TRANSITIONEND_EVENT, ANIMATION_PROP, ANIMA
   TRANSITIONEND_EVENT = 'transitionend';
 }
 
-    if ((window.onanimationend === void 0) && (window.onwebkitanimationend !== void 0)) {
+if ((window.onanimationend === void 0) && (window.onwebkitanimationend !== void 0)) {
   CSS_PREFIX = '-webkit-';
   ANIMATION_PROP = 'WebkitAnimation';
   ANIMATIONEND_EVENT = 'webkitAnimationEnd animationend';
@@ -270,10 +270,10 @@ function resolveElementClasses(existing, toAdd, toRemove) {
     var prop, allow;
     if (val === ADD_CLASS) {
       prop = 'addClass';
-        allow = !existing[klass] || existing[klass + REMOVE_CLASS_SUFFIX];
+      allow = !existing[klass] || existing[klass + REMOVE_CLASS_SUFFIX];
     } else if (val === REMOVE_CLASS) {
       prop = 'removeClass';
-        allow = existing[klass] || existing[klass + ADD_CLASS_SUFFIX];
+      allow = existing[klass] || existing[klass + ADD_CLASS_SUFFIX];
     }
     if (allow) {
       if (classes[prop].length) {
@@ -303,7 +303,7 @@ function resolveElementClasses(existing, toAdd, toRemove) {
 }
 
 function getDomNode(element) {
-    return (element instanceof jqLite) ? element[0] : element;
+  return (element instanceof jqLite) ? element[0] : element;
 }
 
 function applyGeneratedPreparationClasses(element, event, options) {
@@ -493,7 +493,7 @@ var $$AnimateChildrenDirective = ['$interpolate', function($interpolate) {
   return {
     link: function(scope, element, attrs) {
       var val = attrs.ngAnimateChildren;
-        if (isString(val) && val.length === 0) { //empty attribute
+      if (isString(val) && val.length === 0) { //empty attribute
         element.data(NG_ANIMATE_CHILDREN_DATA, true);
       } else {
         // Interpolate and set the value, so that it is available to
@@ -930,7 +930,7 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
         gcsStaggerLookup.flush();
 
         // DO NOT REMOVE THIS LINE OR REFACTOR OUT THE `pageWidth` variable.
-        // PLEASE EXAMINE THE `$$forceReflow` factory to understand why.
+        // PLEASE EXAMINE THE `$$forceReflow` service to understand why.
         var pageWidth = $$forceReflow();
 
         // we use a for loop to ensure that if the queue is changed
@@ -959,7 +959,7 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
     return function init(element, initialOptions) {
       // all of the animation functions should create
       // a copy of the options data, however, if a
-      // parent factory has already created a copy then
+      // parent service has already created a copy then
       // we should stick to using that
       var options = initialOptions || {};
       if (!options.$$prepared) {
@@ -2279,7 +2279,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       }
     );
 
-           var callbackRegistry = Object.create(null);
+    var callbackRegistry = Object.create(null);
 
     // remember that the classNameFilter is set during the provider/config
     // stage therefore we can optimize here and setup a helper function
@@ -2362,7 +2362,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
       },
 
       off: function(event, container, callback) {
-          if (arguments.length === 1 && !isString(arguments[0])) {
+        if (arguments.length === 1 && !isString(arguments[0])) {
           container = arguments[0];
           for (var eventType in callbackRegistry) {
             callbackRegistry[eventType] = filterFromRegistry(callbackRegistry[eventType], container);
@@ -2413,7 +2413,7 @@ var $$AnimateQueueProvider = ['$animateProvider', function($animateProvider) {
 
             if (argCount === 1) {
               // (element) - Element getter
-                bool = !disabledElementsLookup.get(node);
+              bool = !disabledElementsLookup.get(node);
             } else {
               // (element, bool) - Element setter
               disabledElementsLookup.put(node, !bool);
@@ -4083,17 +4083,17 @@ var ngAnimateSwapDirective = ['$animate', '$rootScope', function($animate, $root
  */
 
 var copy;
-    var extend;
-    var forEach;
-    var isArray;
-    var isDefined;
-    var isElement;
-    var isFunction;
-    var isObject;
-    var isString;
-    var isUndefined;
-    var jqLite;
-    var noop;
+var extend;
+var forEach;
+var isArray;
+var isDefined;
+var isElement;
+var isFunction;
+var isObject;
+var isString;
+var isUndefined;
+var jqLite;
+var noop;
 
 /**
  * @ngdoc service
@@ -4106,20 +4106,20 @@ var copy;
  * Click here {@link ng.$animate to learn more about animations with `$animate`}.
  */
 angular.module('ngAnimate', [], function initAngularHelpers() {
-    // Access helpers from angular core.
-    // Do it inside a `config` block to ensure `window.angular` is available.
-    noop = angular.noop;
-    copy = angular.copy;
-    extend = angular.extend;
-    jqLite = angular.element;
-    forEach = angular.forEach;
-    isArray = angular.isArray;
-    isString = angular.isString;
-    isObject = angular.isObject;
-    isUndefined = angular.isUndefined;
-    isDefined = angular.isDefined;
-    isFunction = angular.isFunction;
-    isElement = angular.isElement;
+  // Access helpers from angular core.
+  // Do it inside a `config` block to ensure `window.angular` is available.
+  noop        = angular.noop;
+  copy        = angular.copy;
+  extend      = angular.extend;
+  jqLite      = angular.element;
+  forEach     = angular.forEach;
+  isArray     = angular.isArray;
+  isString    = angular.isString;
+  isObject    = angular.isObject;
+  isUndefined = angular.isUndefined;
+  isDefined   = angular.isDefined;
+  isFunction  = angular.isFunction;
+  isElement   = angular.isElement;
 })
   .directive('ngAnimateSwap', ngAnimateSwapDirective)
 

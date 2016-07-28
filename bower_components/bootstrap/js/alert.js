@@ -18,7 +18,7 @@
     $(el).on('click', dismiss, this.close)
   }
 
-    Alert.VERSION = '3.3.7'
+  Alert.VERSION = '3.3.7'
 
   Alert.TRANSITION_DURATION = 150
 
@@ -31,7 +31,7 @@
       selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
     }
 
-      var $parent = $(selector === '#' ? [] : selector)
+    var $parent = $(selector === '#' ? [] : selector)
 
     if (e) e.preventDefault()
 

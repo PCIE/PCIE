@@ -16,7 +16,7 @@
   /*--------------------------------------------------------------------------*/
 
   // Initialize controls.
-  addEventListener('load', function () {
+  addEventListener('load', function() {
     function eventHandler(event) {
       var buildIndex = buildList.selectedIndex,
           loaderIndex = loaderList.selectedIndex,
@@ -90,10 +90,10 @@
       '</select>';
 
     span1.style.cssText =
-      span2.style.cssText = 'display:inline-block;float:right;line-height:2.1em;margin-left:1em;margin-top:0;';
+    span2.style.cssText = 'display:inline-block;float:right;line-height:2.1em;margin-left:1em;margin-top:0;';
 
     span1.firstChild.style.cssText =
-      span2.firstChild.style.cssText = 'display:inline-block;margin-right:.5em;';
+    span2.firstChild.style.cssText = 'display:inline-block;margin-right:.5em;';
 
     var buildList = span1.lastChild,
         loaderList = span2.lastChild;

@@ -7,7 +7,7 @@ define( [
 	"./setGlobalEval"
 ], function( jQuery, rtagName, rscriptType, wrapMap, getAll, setGlobalEval ) {
 
-    "use strict";
+"use strict";
 
 var rhtml = /<|&#?\w+;/;
 
@@ -26,7 +26,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 			// Add nodes directly
 			if ( jQuery.type( elem ) === "object" ) {
 
-                // Support: Android <=4.0 only, PhantomJS 1 only
+				// Support: Android <=4.0 only, PhantomJS 1 only
 				// push.apply(_, arraylike) throws on ancient WebKit
 				jQuery.merge( nodes, elem.nodeType ? [ elem ] : elem );
 
@@ -49,7 +49,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 					tmp = tmp.lastChild;
 				}
 
-                // Support: Android <=4.0 only, PhantomJS 1 only
+				// Support: Android <=4.0 only, PhantomJS 1 only
 				// push.apply(_, arraylike) throws on ancient WebKit
 				jQuery.merge( nodes, tmp.childNodes );
 

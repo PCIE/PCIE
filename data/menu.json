@@ -3,29 +3,11 @@
     {
       "categorie": "A propos de PCIE",
       "url": "",
-      "sous-categorie": [
+      "souscategorie": [
         {
-          "nom": "Nos Valeurs",
+          "nom": "Qui Sommes Nous ?",
           "anchor": ""
         },
-        {
-          "nom": "Notre équipe",
-          "anchor": ""
-        },
-        {
-          "nom": "Localisation",
-          "anchor": ""
-        },
-        {
-          "nom": "Localisation",
-          "anchor": ""
-        }
-      ]
-    },
-    {
-      "categorie": "A propos de PCIE",
-      "url": "",
-      "sous-categorie": [
         {
           "nom": "Nos Valeurs",
           "anchor": ""
@@ -41,19 +23,37 @@
       ]
     },
     {
-      "categorie": "A propos de PCIE",
+      "categorie": "Nos Services",
       "url": "",
-      "sous-categorie": [
+      "souscategorie": [
         {
-          "nom": "Nos Valeurs",
+          "nom": "Secteurs d'activité",
           "anchor": ""
         },
         {
-          "nom": "Notre équipe",
+          "nom": "Nos Partenaires",
           "anchor": ""
         },
         {
-          "nom": "Localisation",
+          "nom": "Notre Approche",
+          "anchor": ""
+        }
+      ]
+    },
+    {
+      "categorie": "Carrières",
+      "url": "",
+      "souscategorie": [
+        {
+          "nom": "Travailler chez PCIE",
+          "anchor": ""
+        },
+        {
+          "nom": "Offre d'emploi",
+          "anchor": ""
+        },
+        {
+          "nom": "Espace candidat",
           "anchor": ""
         }
       ]

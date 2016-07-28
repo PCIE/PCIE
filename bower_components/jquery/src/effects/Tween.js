@@ -3,7 +3,7 @@ define( [
 	"../css"
 ], function( jQuery ) {
 
-    "use strict";
+"use strict";
 
 function Tween( elem, options, prop, end, easing ) {
 	return new Tween.prototype.init( elem, options, prop, end, easing );

@@ -2,7 +2,7 @@ define( [
 	"../core"
 ], function( jQuery ) {
 
-    "use strict";
+"use strict";
 
 // Register as a named AMD module, since jQuery can be concatenated with other
 // files that may use define, but not via a proper concatenation script that

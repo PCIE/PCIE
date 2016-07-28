@@ -4,7 +4,7 @@ define( [
 	"./var/acceptData"
 ], function( jQuery, rnotwhite, acceptData ) {
 
-    "use strict";
+"use strict";
 
 function Data() {
 	this.expando = jQuery.expando + Data.uid++;
@@ -52,16 +52,16 @@ Data.prototype = {
 			cache = this.cache( owner );
 
 		// Handle: [ owner, key, value ] args
-        // Always use camelCase key (gh-2257)
+		// Always use camelCase key (gh-2257)
 		if ( typeof data === "string" ) {
-            cache[jQuery.camelCase(data)] = value;
+			cache[ jQuery.camelCase( data ) ] = value;
 
 		// Handle: [ owner, { properties } ] args
 		} else {
 
 			// Copy the properties one-by-one to the cache object
 			for ( prop in data ) {
-                cache[jQuery.camelCase(prop)] = data[prop];
+				cache[ jQuery.camelCase( prop ) ] = data[ prop ];
 			}
 		}
 		return cache;
@@ -70,8 +70,8 @@ Data.prototype = {
 		return key === undefined ?
 			this.cache( owner ) :
 
-            // Always use camelCase key (gh-2257)
-        owner[this.expando] && owner[this.expando][jQuery.camelCase(key)];
+			// Always use camelCase key (gh-2257)
+			owner[ this.expando ] && owner[ this.expando ][ jQuery.camelCase( key ) ];
 	},
 	access: function( owner, key, value ) {
 
@@ -89,7 +89,7 @@ Data.prototype = {
 		if ( key === undefined ||
 				( ( key && typeof key === "string" ) && value === undefined ) ) {
 
-            return this.get(owner, key);
+			return this.get( owner, key );
 		}
 
 		// When the key is not a string, or both a key and value
@@ -105,45 +105,45 @@ Data.prototype = {
 		return value !== undefined ? value : key;
 	},
 	remove: function( owner, key ) {
-        var i,
+		var i,
 			cache = owner[ this.expando ];
 
 		if ( cache === undefined ) {
 			return;
 		}
 
-        if (key !== undefined) {
+		if ( key !== undefined ) {
 
 			// Support array or space separated string of keys
 			if ( jQuery.isArray( key ) ) {
 
-                // If key is an array of keys...
-                // We always set camelCase keys, so remove that.
-                key = key.map(jQuery.camelCase);
+				// If key is an array of keys...
+				// We always set camelCase keys, so remove that.
+				key = key.map( jQuery.camelCase );
 			} else {
-                key = jQuery.camelCase(key);
+				key = jQuery.camelCase( key );
 
-                // If a key with the spaces exists, use it.
-                // Otherwise, create an array by matching non-whitespace
-                key = key in cache ?
-                    [key] :
-                    ( key.match(rnotwhite) || [] );
+				// If a key with the spaces exists, use it.
+				// Otherwise, create an array by matching non-whitespace
+				key = key in cache ?
+					[ key ] :
+					( key.match( rnotwhite ) || [] );
 			}
 
-            i = key.length;
+			i = key.length;
 
 			while ( i-- ) {
-                delete cache[key[i]];
+				delete cache[ key[ i ] ];
 			}
 		}
 
 		// Remove the expando if there's no more data
 		if ( key === undefined || jQuery.isEmptyObject( cache ) ) {
 
-            // Support: Chrome <=35 - 45
+			// Support: Chrome <=35 - 45
 			// Webkit & Blink performance suffers when deleting properties
 			// from DOM nodes, so set to undefined instead
-            // https://bugs.chromium.org/p/chromium/issues/detail?id=378607 (bug restricted)
+			// https://bugs.chromium.org/p/chromium/issues/detail?id=378607 (bug restricted)
 			if ( owner.nodeType ) {
 				owner[ this.expando ] = undefined;
 			} else {

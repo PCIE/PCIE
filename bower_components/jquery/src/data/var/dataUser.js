@@ -1,7 +1,7 @@
 define( [
 	"../Data"
 ], function( Data ) {
-    "use strict";
+	"use strict";
 
 	return new Data();
 } );

@@ -145,8 +145,8 @@
 
   /** Used to match wrap detail comments. */
   var reWrapComment = /\{(?:\n\/\* \[wrapped with .+\] \*\/)?\n?/,
-    reWrapDetails = /\{\n\/\* \[wrapped with (.+)\] \*/,
-    reSplitDetails = /,? & /;
+      reWrapDetails = /\{\n\/\* \[wrapped with (.+)\] \*/,
+      reSplitDetails = /,? & /;
 
   /** Used to match non-compound words composed of alphanumeric characters. */
   var reBasicWord = /[a-zA-Z0-9]+/g;
@@ -382,20 +382,19 @@
   var freeProcess = moduleExports && freeGlobal.process;
 
   /** Used to access faster Node.js helpers. */
-  var nodeUtil = (function () {
+  var nodeUtil = (function() {
     try {
       return freeProcess && freeProcess.binding('util');
-    } catch (e) {
-    }
+    } catch (e) {}
   }());
 
   /* Node.js helper references. */
   var nodeIsArrayBuffer = nodeUtil && nodeUtil.isArrayBuffer,
-    nodeIsDate = nodeUtil && nodeUtil.isDate,
-    nodeIsMap = nodeUtil && nodeUtil.isMap,
-    nodeIsRegExp = nodeUtil && nodeUtil.isRegExp,
-    nodeIsSet = nodeUtil && nodeUtil.isSet,
-    nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
+      nodeIsDate = nodeUtil && nodeUtil.isDate,
+      nodeIsMap = nodeUtil && nodeUtil.isMap,
+      nodeIsRegExp = nodeUtil && nodeUtil.isRegExp,
+      nodeIsSet = nodeUtil && nodeUtil.isSet,
+      nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
 
   /*--------------------------------------------------------------------------*/
 
@@ -823,7 +822,7 @@
    * @returns {Function} Returns the new accessor function.
    */
   function baseProperty(key) {
-    return function (object) {
+    return function(object) {
       return object == null ? undefined : object[key];
     };
   }
@@ -836,7 +835,7 @@
    * @returns {Function} Returns the new accessor function.
    */
   function basePropertyOf(object) {
-    return function (key) {
+    return function(key) {
       return object == null ? undefined : object[key];
     };
   }
@@ -1137,7 +1136,7 @@
    * @returns {Function} Returns the new function.
    */
   function overArg(func, transform) {
-    return function (arg) {
+    return function(arg) {
       return func(transform(arg));
     };
   }
@@ -1282,7 +1281,7 @@
 
     /** Built-in constructor references. */
     var Array = context.Array,
-      Date = context.Date,
+        Date = context.Date,
         Error = context.Error,
         Math = context.Math,
         RegExp = context.RegExp,
@@ -1336,26 +1335,22 @@
         Symbol = context.Symbol,
         Uint8Array = context.Uint8Array,
         enumerate = Reflect ? Reflect.enumerate : undefined,
-      iteratorSymbol = Symbol ? Symbol.iterator : undefined,
-      objectCreate = context.Object.create,
+        iteratorSymbol = Symbol ? Symbol.iterator : undefined,
+        objectCreate = context.Object.create,
         propertyIsEnumerable = objectProto.propertyIsEnumerable,
-      splice = arrayProto.splice,
-      spreadableSymbol = Symbol ? Symbol.isConcatSpreadable : undefined;
+        splice = arrayProto.splice,
+        spreadableSymbol = Symbol ? Symbol.isConcatSpreadable : undefined;
 
     /** Built-in method references that are mockable. */
-    var clearTimeout = function (id) {
-        return context.clearTimeout.call(root, id);
-      },
-      setTimeout = function (func, wait) {
-        return context.setTimeout.call(root, func, wait);
-      };
+    var clearTimeout = function(id) { return context.clearTimeout.call(root, id); },
+        setTimeout = function(func, wait) { return context.setTimeout.call(root, func, wait); };
 
     /* Built-in method references for those with the same name as other `lodash` methods. */
     var nativeCeil = Math.ceil,
         nativeFloor = Math.floor,
         nativeGetPrototype = Object.getPrototypeOf,
-      nativeGetSymbols = Object.getOwnPropertySymbols,
-      nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined,
+        nativeGetSymbols = Object.getOwnPropertySymbols,
+        nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined,
         nativeIsFinite = context.isFinite,
         nativeJoin = arrayProto.join,
         nativeKeys = Object.keys,
@@ -1373,12 +1368,12 @@
         Promise = getNative(context, 'Promise'),
         Set = getNative(context, 'Set'),
         WeakMap = getNative(context, 'WeakMap'),
-      nativeCreate = getNative(context.Object, 'create');
+        nativeCreate = getNative(context.Object, 'create');
 
     /* Used to set `toString` methods. */
-    var defineProperty = (function () {
+    var defineProperty = (function() {
       var func = getNative(context.Object, 'defineProperty'),
-        name = getNative.name;
+          name = getNative.name;
 
       return (name && name.length > 2) ? func : undefined;
     }());
@@ -2455,10 +2450,11 @@
       var index = length;
       while (index--) {
         var key = props[index],
-          predicate = source[key],
-          value = object[key];
+            predicate = source[key],
+            value = object[key];
 
-        if ((value === undefined && !(key in Object(object))) || !predicate(value)) {
+        if ((value === undefined &&
+            !(key in Object(object))) || !predicate(value)) {
           return false;
         }
       }
@@ -3473,7 +3469,7 @@
      */
     function basePick(object, props) {
       object = Object(object);
-      return basePickBy(object, props, function (value, key) {
+      return basePickBy(object, props, function(value, key) {
         return key in object;
       });
     }
@@ -3664,11 +3660,11 @@
      */
     function baseRest(func, start) {
       start = nativeMax(start === undefined ? (func.length - 1) : start, 0);
-      return function () {
+      return function() {
         var args = arguments,
-          index = -1,
-          length = nativeMax(args.length - start, 0),
-          array = Array(length);
+            index = -1,
+            length = nativeMax(args.length - start, 0),
+            array = Array(length);
 
         while (++index < length) {
           array[index] = args[start + index];
@@ -4506,7 +4502,7 @@
      * @returns {Function} Returns the new assigner function.
      */
     function createAssigner(assigner) {
-      return baseRest(function (object, sources) {
+      return baseRest(function(object, sources) {
         var index = -1,
             length = sources.length,
             customizer = length > 1 ? sources[length - 1] : undefined,
@@ -4596,7 +4592,7 @@
      */
     function createBind(func, bitmask, thisArg) {
       var isBind = bitmask & BIND_FLAG,
-        Ctor = createCtor(func);
+          Ctor = createCtor(func);
 
       function wrapper() {
         var fn = (this && this !== root && this instanceof wrapper) ? Ctor : func;
@@ -4728,9 +4724,7 @@
         if (!isArrayLike(collection)) {
           var iteratee = getIteratee(predicate, 3);
           collection = keys(collection);
-          predicate = function (key) {
-            return iteratee(iterable[key], key, iterable);
-          };
+          predicate = function(key) { return iteratee(iterable[key], key, iterable); };
         }
         var index = findIndexFunc(collection, predicate, fromIndex);
         return index > -1 ? iterable[iteratee ? collection[index] : index] : undefined;
@@ -4745,7 +4739,7 @@
      * @returns {Function} Returns the new flow function.
      */
     function createFlow(fromRight) {
-      return baseRest(function (funcs) {
+      return baseRest(function(funcs) {
         funcs = baseFlatten(funcs, 1);
 
         var length = funcs.length,
@@ -4826,7 +4820,7 @@
           isBindKey = bitmask & BIND_KEY_FLAG,
           isCurried = bitmask & (CURRY_FLAG | CURRY_RIGHT_FLAG),
           isFlip = bitmask & FLIP_FLAG,
-        Ctor = isBindKey ? undefined : createCtor(func);
+          Ctor = isBindKey ? undefined : createCtor(func);
 
       function wrapper() {
         var length = arguments.length,
@@ -4930,12 +4924,12 @@
      * @returns {Function} Returns the new over function.
      */
     function createOver(arrayFunc) {
-      return baseRest(function (iteratees) {
+      return baseRest(function(iteratees) {
         iteratees = (iteratees.length == 1 && isArray(iteratees[0]))
           ? arrayMap(iteratees[0], baseUnary(getIteratee()))
           : arrayMap(baseFlatten(iteratees, 1), baseUnary(getIteratee()));
 
-        return baseRest(function (args) {
+        return baseRest(function(args) {
           var thisArg = this;
           return arrayFunc(iteratees, function(iteratee) {
             return apply(iteratee, thisArg, args);
@@ -4980,7 +4974,7 @@
      */
     function createPartial(func, bitmask, thisArg, partials) {
       var isBind = bitmask & BIND_FLAG,
-        Ctor = createCtor(func);
+          Ctor = createCtor(func);
 
       function wrapper() {
         var argsIndex = -1,
@@ -5630,7 +5624,7 @@
      * @param {Object} object The object to query.
      * @returns {Array} Returns the array of symbols.
      */
-    var getSymbolsIn = !nativeGetSymbols ? getSymbols : function (object) {
+    var getSymbolsIn = !nativeGetSymbols ? getSymbols : function(object) {
       var result = [];
       while (object) {
         arrayPush(result, getSymbols(object));
@@ -5852,7 +5846,7 @@
      */
     function insertWrapDetails(source, details) {
       var length = details.length,
-        lastIndex = length - 1;
+          lastIndex = length - 1;
 
       details[lastIndex] = (length > 1 ? '& ' : '') + details[lastIndex];
       details = details.join(length > 2 ? ', ' : ' ');
@@ -5867,7 +5861,8 @@
      * @returns {boolean} Returns `true` if `value` is flattenable, else `false`.
      */
     function isFlattenable(value) {
-      return isArray(value) || isArguments(value) || !!(spreadableSymbol && value && value[spreadableSymbol])
+      return isArray(value) || isArguments(value) ||
+        !!(spreadableSymbol && value && value[spreadableSymbol])
     }
 
     /**
@@ -6203,7 +6198,7 @@
      * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
      * @returns {Function} Returns `wrapper`.
      */
-    var setWrapToString = !defineProperty ? identity : function (wrapper, reference, bitmask) {
+    var setWrapToString = !defineProperty ? identity : function(wrapper, reference, bitmask) {
       var source = (reference + '');
       return defineProperty(wrapper, 'toString', {
         'configurable': true,
@@ -6270,7 +6265,7 @@
      * @returns {Array} Returns `details`.
      */
     function updateWrapDetails(details, bitmask) {
-      arrayEach(wrapFlags, function (pair) {
+      arrayEach(wrapFlags, function(pair) {
         var value = '_.' + pair[0];
         if ((bitmask & pair[1]) && !arrayIncludes(details, value)) {
           details.push(value);
@@ -6427,7 +6422,7 @@
      * _.difference([2, 1], [2, 3]);
      * // => [1]
      */
-    var difference = baseRest(function (array, values) {
+    var difference = baseRest(function(array, values) {
       return isArrayLikeObject(array)
         ? baseDifference(array, baseFlatten(values, 1, isArrayLikeObject, true))
         : [];
@@ -6458,7 +6453,7 @@
      * _.differenceBy([{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }], 'x');
      * // => [{ 'x': 2 }]
      */
-    var differenceBy = baseRest(function (array, values) {
+    var differenceBy = baseRest(function(array, values) {
       var iteratee = last(values);
       if (isArrayLikeObject(iteratee)) {
         iteratee = undefined;
@@ -6491,7 +6486,7 @@
      * _.differenceWith(objects, [{ 'x': 1, 'y': 2 }], _.isEqual);
      * // => [{ 'x': 2, 'y': 1 }]
      */
-    var differenceWith = baseRest(function (array, values) {
+    var differenceWith = baseRest(function(array, values) {
       var comparator = last(values);
       if (isArrayLikeObject(comparator)) {
         comparator = undefined;
@@ -6979,7 +6974,7 @@
      * _.intersection([2, 1], [2, 3]);
      * // => [2]
      */
-    var intersection = baseRest(function (arrays) {
+    var intersection = baseRest(function(arrays) {
       var mapped = arrayMap(arrays, castArrayLikeObject);
       return (mapped.length && mapped[0] === arrays[0])
         ? baseIntersection(mapped)
@@ -7008,7 +7003,7 @@
      * _.intersectionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
      * // => [{ 'x': 1 }]
      */
-    var intersectionBy = baseRest(function (arrays) {
+    var intersectionBy = baseRest(function(arrays) {
       var iteratee = last(arrays),
           mapped = arrayMap(arrays, castArrayLikeObject);
 
@@ -7043,7 +7038,7 @@
      * _.intersectionWith(objects, others, _.isEqual);
      * // => [{ 'x': 1, 'y': 2 }]
      */
-    var intersectionWith = baseRest(function (arrays) {
+    var intersectionWith = baseRest(function(arrays) {
       var comparator = last(arrays),
           mapped = arrayMap(arrays, castArrayLikeObject);
 
@@ -7300,7 +7295,7 @@
      * console.log(pulled);
      * // => ['b', 'd']
      */
-    var pullAt = baseRest(function (array, indexes) {
+    var pullAt = baseRest(function(array, indexes) {
       indexes = baseFlatten(indexes, 1);
 
       var length = array ? array.length : 0,
@@ -7808,7 +7803,7 @@
      * _.union([2], [1, 2]);
      * // => [2, 1]
      */
-    var union = baseRest(function (arrays) {
+    var union = baseRest(function(arrays) {
       return baseUniq(baseFlatten(arrays, 1, isArrayLikeObject, true));
     });
 
@@ -7836,7 +7831,7 @@
      * _.unionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
      * // => [{ 'x': 1 }, { 'x': 2 }]
      */
-    var unionBy = baseRest(function (arrays) {
+    var unionBy = baseRest(function(arrays) {
       var iteratee = last(arrays);
       if (isArrayLikeObject(iteratee)) {
         iteratee = undefined;
@@ -7865,7 +7860,7 @@
      * _.unionWith(objects, others, _.isEqual);
      * // => [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }, { 'x': 1, 'y': 1 }]
      */
-    var unionWith = baseRest(function (arrays) {
+    var unionWith = baseRest(function(arrays) {
       var comparator = last(arrays);
       if (isArrayLikeObject(comparator)) {
         comparator = undefined;
@@ -8038,7 +8033,7 @@
      * _.without([2, 1, 2, 3], 1, 2);
      * // => [3]
      */
-    var without = baseRest(function (array, values) {
+    var without = baseRest(function(array, values) {
       return isArrayLikeObject(array)
         ? baseDifference(array, values)
         : [];
@@ -8062,7 +8057,7 @@
      * _.xor([2, 1], [2, 3]);
      * // => [1, 3]
      */
-    var xor = baseRest(function (arrays) {
+    var xor = baseRest(function(arrays) {
       return baseXor(arrayFilter(arrays, isArrayLikeObject));
     });
 
@@ -8089,7 +8084,7 @@
      * _.xorBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
      * // => [{ 'x': 2 }]
      */
-    var xorBy = baseRest(function (arrays) {
+    var xorBy = baseRest(function(arrays) {
       var iteratee = last(arrays);
       if (isArrayLikeObject(iteratee)) {
         iteratee = undefined;
@@ -8117,7 +8112,7 @@
      * _.xorWith(objects, others, _.isEqual);
      * // => [{ 'x': 2, 'y': 1 }, { 'x': 1, 'y': 1 }]
      */
-    var xorWith = baseRest(function (arrays) {
+    var xorWith = baseRest(function(arrays) {
       var comparator = last(arrays);
       if (isArrayLikeObject(comparator)) {
         comparator = undefined;
@@ -8201,7 +8196,7 @@
      * });
      * // => [111, 222]
      */
-    var zipWith = baseRest(function (arrays) {
+    var zipWith = baseRest(function(arrays) {
       var length = arrays.length,
           iteratee = length > 1 ? arrays[length - 1] : undefined;
 
@@ -8317,7 +8312,7 @@
      * _(object).at(['a[0].b.c', 'a[1]']).value();
      * // => [3, 4]
      */
-    var wrapperAt = baseRest(function (paths) {
+    var wrapperAt = baseRest(function(paths) {
       paths = baseFlatten(paths, 1);
       var length = paths.length,
           start = length ? paths[0] : 0,
@@ -8971,7 +8966,7 @@
      * _.invokeMap([123, 456], String.prototype.split, '');
      * // => [['1', '2', '3'], ['4', '5', '6']]
      */
-    var invokeMap = baseRest(function (collection, path, args) {
+    var invokeMap = baseRest(function(collection, path, args) {
       var index = -1,
           isFunc = typeof path == 'function',
           isProp = isKey(path),
@@ -9457,7 +9452,7 @@
      * });
      * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
      */
-    var sortBy = baseRest(function (collection, iteratees) {
+    var sortBy = baseRest(function(collection, iteratees) {
       if (collection == null) {
         return [];
       }
@@ -9622,7 +9617,7 @@
      * bound('hi');
      * // => 'hi fred!'
      */
-    var bind = baseRest(function (func, thisArg, partials) {
+    var bind = baseRest(function(func, thisArg, partials) {
       var bitmask = BIND_FLAG;
       if (partials.length) {
         var holders = replaceHolders(partials, getHolder(bind));
@@ -9676,7 +9671,7 @@
      * bound('hi');
      * // => 'hiya fred!'
      */
-    var bindKey = baseRest(function (object, key, partials) {
+    var bindKey = baseRest(function(object, key, partials) {
       var bitmask = BIND_FLAG | BIND_KEY_FLAG;
       if (partials.length) {
         var holders = replaceHolders(partials, getHolder(bindKey));
@@ -9968,7 +9963,7 @@
      * }, 'deferred');
      * // => Logs 'deferred' after one or more milliseconds.
      */
-    var defer = baseRest(function (func, args) {
+    var defer = baseRest(function(func, args) {
       return baseDelay(func, 1, args);
     });
 
@@ -9991,7 +9986,7 @@
      * }, 1000, 'later');
      * // => Logs 'later' after one second.
      */
-    var delay = baseRest(function (func, wait, args) {
+    var delay = baseRest(function(func, wait, args) {
       return baseDelay(func, toNumber(wait) || 0, args);
     });
 
@@ -10111,14 +10106,10 @@
       return function() {
         var args = arguments;
         switch (args.length) {
-          case 0:
-            return !predicate.call(this);
-          case 1:
-            return !predicate.call(this, args[0]);
-          case 2:
-            return !predicate.call(this, args[0], args[1]);
-          case 3:
-            return !predicate.call(this, args[0], args[1], args[2]);
+          case 0: return !predicate.call(this);
+          case 1: return !predicate.call(this, args[0]);
+          case 2: return !predicate.call(this, args[0], args[1]);
+          case 3: return !predicate.call(this, args[0], args[1], args[2]);
         }
         return !predicate.apply(this, args);
       };
@@ -10177,13 +10168,13 @@
      * func(10, 5);
      * // => [100, 10]
      */
-    var overArgs = baseRest(function (func, transforms) {
+    var overArgs = baseRest(function(func, transforms) {
       transforms = (transforms.length == 1 && isArray(transforms[0]))
         ? arrayMap(transforms[0], baseUnary(getIteratee()))
         : arrayMap(baseFlatten(transforms, 1), baseUnary(getIteratee()));
 
       var funcsLength = transforms.length;
-      return baseRest(function (args) {
+      return baseRest(function(args) {
         var index = -1,
             length = nativeMin(args.length, funcsLength);
 
@@ -10227,7 +10218,7 @@
      * greetFred('hi');
      * // => 'hi fred'
      */
-    var partial = baseRest(function (func, partials) {
+    var partial = baseRest(function(func, partials) {
       var holders = replaceHolders(partials, getHolder(partial));
       return createWrap(func, PARTIAL_FLAG, undefined, partials, holders);
     });
@@ -10264,7 +10255,7 @@
      * sayHelloTo('fred');
      * // => 'hello fred'
      */
-    var partialRight = baseRest(function (func, partials) {
+    var partialRight = baseRest(function(func, partials) {
       var holders = replaceHolders(partials, getHolder(partialRight));
       return createWrap(func, PARTIAL_RIGHT_FLAG, undefined, partials, holders);
     });
@@ -10291,7 +10282,7 @@
      * rearged('b', 'c', 'a')
      * // => ['a', 'b', 'c']
      */
-    var rearg = baseRest(function (func, indexes) {
+    var rearg = baseRest(function(func, indexes) {
       return createWrap(func, REARG_FLAG, undefined, undefined, undefined, baseFlatten(indexes, 1));
     });
 
@@ -10367,7 +10358,7 @@
         throw new TypeError(FUNC_ERROR_TEXT);
       }
       start = start === undefined ? 0 : nativeMax(toInteger(start), 0);
-      return baseRest(function (args) {
+      return baseRest(function(args) {
         var array = args[start],
             otherArgs = castSlice(args, 0, start);
 
@@ -12246,7 +12237,7 @@
      * _.at(object, ['a[0].b.c', 'a[1]']);
      * // => [3, 4]
      */
-    var at = baseRest(function (object, paths) {
+    var at = baseRest(function(object, paths) {
       return baseAt(object, baseFlatten(paths, 1));
     });
 
@@ -12310,7 +12301,7 @@
      * _.defaults({ 'a': 1 }, { 'b': 2 }, { 'a': 3 });
      * // => { 'a': 1, 'b': 2 }
      */
-    var defaults = baseRest(function (args) {
+    var defaults = baseRest(function(args) {
       args.push(undefined, assignInDefaults);
       return apply(assignInWith, undefined, args);
     });
@@ -12334,7 +12325,7 @@
      * _.defaultsDeep({ 'a': { 'b': 2 } }, { 'a': { 'b': 1, 'c': 3 } });
      * // => { 'a': { 'b': 2, 'c': 3 } }
      */
-    var defaultsDeep = baseRest(function (args) {
+    var defaultsDeep = baseRest(function(args) {
       args.push(undefined, mergeDefaults);
       return apply(mergeWith, undefined, args);
     });
@@ -13015,7 +13006,7 @@
      * _.omit(object, ['a', 'c']);
      * // => { 'b': '2' }
      */
-    var omit = baseRest(function (object, props) {
+    var omit = baseRest(function(object, props) {
       if (object == null) {
         return {};
       }
@@ -13064,7 +13055,7 @@
      * _.pick(object, ['a', 'c']);
      * // => { 'a': 1, 'c': 3 }
      */
-    var pick = baseRest(function (object, props) {
+    var pick = baseRest(function(object, props) {
       return object == null ? {} : basePick(object, arrayMap(baseFlatten(props, 1), toKey));
     });
 
@@ -14746,7 +14737,7 @@
      *   elements = [];
      * }
      */
-    var attempt = baseRest(function (func, args) {
+    var attempt = baseRest(function(func, args) {
       try {
         return apply(func, undefined, args);
       } catch (e) {
@@ -14780,7 +14771,7 @@
      * jQuery(element).on('click', view.click);
      * // => Logs 'clicked docs' when clicked.
      */
-    var bindAll = baseRest(function (object, methodNames) {
+    var bindAll = baseRest(function(object, methodNames) {
       arrayEach(baseFlatten(methodNames, 1), function(key) {
         key = toKey(key);
         object[key] = bind(object[key], object);
@@ -14828,7 +14819,7 @@
         return [toIteratee(pair[0]), pair[1]];
       });
 
-      return baseRest(function (args) {
+      return baseRest(function(args) {
         var index = -1;
         while (++index < length) {
           var pair = pairs[index];
@@ -15106,7 +15097,7 @@
      * _.map(objects, _.method(['a', 'b']));
      * // => [2, 1]
      */
-    var method = baseRest(function (path, args) {
+    var method = baseRest(function(path, args) {
       return function(object) {
         return baseInvoke(object, path, args);
       };
@@ -15135,7 +15126,7 @@
      * _.map([['a', '2'], ['c', '0']], _.methodOf(object));
      * // => [2, 0]
      */
-    var methodOf = baseRest(function (object, args) {
+    var methodOf = baseRest(function(object, args) {
       return function(path) {
         return baseInvoke(object, path, args);
       };
@@ -15271,7 +15262,7 @@
      */
     function nthArg(n) {
       n = toInteger(n);
-      return baseRest(function (args) {
+      return baseRest(function(args) {
         return baseNth(args, n);
       });
     }
@@ -16425,7 +16416,7 @@
       return this.reverse().find(predicate);
     };
 
-    LazyWrapper.prototype.invokeMap = baseRest(function (path, args) {
+    LazyWrapper.prototype.invokeMap = baseRest(function(path, args) {
       if (typeof path == 'function') {
         return new LazyWrapper(this);
       }

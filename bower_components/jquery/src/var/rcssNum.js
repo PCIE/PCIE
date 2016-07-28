@@ -2,7 +2,7 @@ define( [
 	"../var/pnum"
 ], function( pnum ) {
 
-    "use strict";
+"use strict";
 
 return new RegExp( "^(?:([+-])=|)(" + pnum + ")([a-z%]*)$", "i" );
 

@@ -5,7 +5,7 @@ define( [
 	"../selector"
 ], function( jQuery, indexOf, rneedsContext ) {
 
-    "use strict";
+"use strict";
 
 var risSimple = /^.[^:#\[\.,]*$/;
 
@@ -34,7 +34,7 @@ function winnow( elements, qualifier, not ) {
 	}
 
 	return jQuery.grep( elements, function( elem ) {
-        return ( indexOf.call(qualifier, elem) > -1 ) !== not && elem.nodeType === 1;
+		return ( indexOf.call( qualifier, elem ) > -1 ) !== not && elem.nodeType === 1;
 	} );
 }
 
@@ -54,7 +54,7 @@ jQuery.filter = function( expr, elems, not ) {
 
 jQuery.fn.extend( {
 	find: function( selector ) {
-        var i, ret,
+		var i, ret,
 			len = this.length,
 			self = this;
 
@@ -68,13 +68,13 @@ jQuery.fn.extend( {
 			} ) );
 		}
 
-        ret = this.pushStack([]);
+		ret = this.pushStack( [] );
 
 		for ( i = 0; i < len; i++ ) {
 			jQuery.find( selector, self[ i ], ret );
 		}
 
-        return len > 1 ? jQuery.uniqueSort(ret) : ret;
+		return len > 1 ? jQuery.uniqueSort( ret ) : ret;
 	},
 	filter: function( selector ) {
 		return this.pushStack( winnow( this, selector || [], false ) );

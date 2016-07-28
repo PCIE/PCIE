@@ -118,7 +118,7 @@
    * @returns {Function} Returns the new accessor function.
    */
   function baseProperty(key) {
-    return function (object) {
+    return function(object) {
       return object == null ? undefined : object[key];
     };
   }
@@ -131,7 +131,7 @@
    * @returns {Function} Returns the new accessor function.
    */
   function basePropertyOf(object) {
-    return function (key) {
+    return function(key) {
       return object == null ? undefined : object[key];
     };
   }
@@ -203,7 +203,7 @@
    * @returns {Function} Returns the new function.
    */
   function overArg(func, transform) {
-    return function (arg) {
+    return function(arg) {
       return func(transform(arg));
     };
   }
@@ -679,10 +679,10 @@
         isSameTag = objTag == othTag;
 
     stack || (stack = []);
-    var objStack = find(stack, function (entry) {
+    var objStack = find(stack, function(entry) {
       return entry[0] == object;
     });
-    var othStack = find(stack, function (entry) {
+    var othStack = find(stack, function(entry) {
       return entry[0] == other;
     });
     if (objStack && othStack) {
@@ -861,11 +861,11 @@
    */
   function baseRest(func, start) {
     start = nativeMax(start === undefined ? (func.length - 1) : start, 0);
-    return function () {
+    return function() {
       var args = arguments,
-        index = -1,
-        length = nativeMax(args.length - start, 0),
-        array = Array(length);
+          index = -1,
+          length = nativeMax(args.length - start, 0),
+          array = Array(length);
 
       while (++index < length) {
         array[index] = args[start + index];
@@ -1032,7 +1032,7 @@
    * @returns {Function} Returns the new assigner function.
    */
   function createAssigner(assigner) {
-    return baseRest(function (object, sources) {
+    return baseRest(function(object, sources) {
       var index = -1,
           length = sources.length,
           customizer = length > 1 ? sources[length - 1] : undefined;
@@ -1141,9 +1141,7 @@
       if (!isArrayLike(collection)) {
         var iteratee = baseIteratee(predicate, 3);
         collection = keys(collection);
-        predicate = function (key) {
-          return iteratee(iterable[key], key, iterable);
-        };
+        predicate = function(key) { return iteratee(iterable[key], key, iterable); };
       }
       var index = findIndexFunc(collection, predicate, fromIndex);
       return index > -1 ? iterable[iteratee ? collection[index] : index] : undefined;
@@ -1167,7 +1165,7 @@
       throw new TypeError(FUNC_ERROR_TEXT);
     }
     var isBind = bitmask & BIND_FLAG,
-      Ctor = createCtor(func);
+        Ctor = createCtor(func);
 
     function wrapper() {
       var argsIndex = -1,
@@ -2211,7 +2209,7 @@
    * bound('hi');
    * // => 'hi fred!'
    */
-  var bind = baseRest(function (func, thisArg, partials) {
+  var bind = baseRest(function(func, thisArg, partials) {
     return createPartial(func, BIND_FLAG | PARTIAL_FLAG, thisArg, partials);
   });
 
@@ -2233,7 +2231,7 @@
    * }, 'deferred');
    * // => Logs 'deferred' after one or more milliseconds.
    */
-  var defer = baseRest(function (func, args) {
+  var defer = baseRest(function(func, args) {
     return baseDelay(func, 1, args);
   });
 
@@ -2256,7 +2254,7 @@
    * }, 1000, 'later');
    * // => Logs 'later' after one second.
    */
-  var delay = baseRest(function (func, wait, args) {
+  var delay = baseRest(function(func, wait, args) {
     return baseDelay(func, toNumber(wait) || 0, args);
   });
 
@@ -3178,7 +3176,7 @@
    * _.defaults({ 'a': 1 }, { 'b': 2 }, { 'a': 3 });
    * // => { 'a': 1, 'b': 2 }
    */
-  var defaults = baseRest(function (args) {
+  var defaults = baseRest(function(args) {
     args.push(undefined, assignInDefaults);
     return assignInWith.apply(undefined, args);
   });
@@ -3286,7 +3284,7 @@
    * _.pick(object, ['a', 'c']);
    * // => { 'a': 1, 'c': 3 }
    */
-  var pick = baseRest(function (object, props) {
+  var pick = baseRest(function(object, props) {
     return object == null ? {} : basePick(object, baseMap(baseFlatten(props, 1), toKey));
   });
 

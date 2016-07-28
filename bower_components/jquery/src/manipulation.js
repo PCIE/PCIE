@@ -15,29 +15,29 @@ define( [
 	"./data/var/dataPriv",
 	"./data/var/dataUser",
 	"./data/var/acceptData",
-    "./core/DOMEval",
+	"./core/DOMEval",
 
 	"./core/init",
 	"./traversing",
 	"./selector",
 	"./event"
-], function(jQuery, concat, push, access,
-            rcheckableType, rtagName, rscriptType,
-            wrapMap, getAll, setGlobalEval, buildFragment, support,
-            dataPriv, dataUser, acceptData, DOMEval) {
+], function( jQuery, concat, push, access,
+	rcheckableType, rtagName, rscriptType,
+	wrapMap, getAll, setGlobalEval, buildFragment, support,
+	dataPriv, dataUser, acceptData, DOMEval ) {
 
-    "use strict";
+"use strict";
 
 var
 
-    /* eslint-disable max-len */
+	/* eslint-disable max-len */
 
-    // See https://github.com/eslint/eslint/issues/3229
-    rxhtmlTag = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([a-z][^\/\0>\x20\t\r\n\f]*)[^>]*)\/>/gi,
+	// See https://github.com/eslint/eslint/issues/3229
+	rxhtmlTag = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([a-z][^\/\0>\x20\t\r\n\f]*)[^>]*)\/>/gi,
 
-    /* eslint-enable */
+	/* eslint-enable */
 
-    // Support: IE <=10 - 11, Edge 12 - 13
+	// Support: IE <=10 - 11, Edge 12 - 13
 	// In IE/Edge using regex groups here causes severe slowdowns.
 	// See https://connect.microsoft.com/IE/feedback/details/1736512/
 	rnoInnerhtml = /<script|<style|<link/i,
@@ -48,13 +48,13 @@ var
 	rcleanScript = /^\s*<!(?:\[CDATA\[|--)|(?:\]\]|--)>\s*$/g;
 
 function manipulationTarget( elem, content ) {
-    if (jQuery.nodeName(elem, "table") &&
-        jQuery.nodeName(content.nodeType !== 11 ? content : content.firstChild, "tr")) {
+	if ( jQuery.nodeName( elem, "table" ) &&
+		jQuery.nodeName( content.nodeType !== 11 ? content : content.firstChild, "tr" ) ) {
 
-        return elem.getElementsByTagName("tbody")[0] || elem;
-    }
+		return elem.getElementsByTagName( "tbody" )[ 0 ] || elem;
+	}
 
-    return elem;
+	return elem;
 }
 
 // Replace/restore the type attribute of script elements for safe DOM manipulation
@@ -172,7 +172,7 @@ function domManip( collection, args, callback, ignored ) {
 					// Keep references to cloned scripts for later restoration
 					if ( hasScripts ) {
 
-                        // Support: Android <=4.0 only, PhantomJS 1 only
+						// Support: Android <=4.0 only, PhantomJS 1 only
 						// push.apply(_, arraylike) throws on ancient WebKit
 						jQuery.merge( scripts, getAll( node, "script" ) );
 					}
@@ -201,7 +201,7 @@ function domManip( collection, args, callback, ignored ) {
 								jQuery._evalUrl( node.src );
 							}
 						} else {
-                            DOMEval(node.textContent.replace(rcleanScript, ""), doc);
+							DOMEval( node.textContent.replace( rcleanScript, "" ), doc );
 						}
 					}
 				}
@@ -247,7 +247,7 @@ jQuery.extend( {
 		if ( !support.noCloneChecked && ( elem.nodeType === 1 || elem.nodeType === 11 ) &&
 				!jQuery.isXMLDoc( elem ) ) {
 
-            // We eschew Sizzle here for performance reasons: https://jsperf.com/getall-vs-sizzle/2
+			// We eschew Sizzle here for performance reasons: https://jsperf.com/getall-vs-sizzle/2
 			destElements = getAll( clone );
 			srcElements = getAll( elem );
 
@@ -300,13 +300,13 @@ jQuery.extend( {
 						}
 					}
 
-                    // Support: Chrome <=35 - 45+
+					// Support: Chrome <=35 - 45+
 					// Assign undefined instead of using delete, see Data#remove
 					elem[ dataPriv.expando ] = undefined;
 				}
 				if ( elem[ dataUser.expando ] ) {
 
-                    // Support: Chrome <=35 - 45+
+					// Support: Chrome <=35 - 45+
 					// Assign undefined instead of using delete, see Data#remove
 					elem[ dataUser.expando ] = undefined;
 				}
@@ -473,8 +473,8 @@ jQuery.each( {
 			elems = i === last ? this : this.clone( true );
 			jQuery( insert[ i ] )[ original ]( elems );
 
-            // Support: Android <=4.0 only, PhantomJS 1 only
-            // .get() because push.apply(_, arraylike) throws on ancient WebKit
+			// Support: Android <=4.0 only, PhantomJS 1 only
+			// .get() because push.apply(_, arraylike) throws on ancient WebKit
 			push.apply( ret, elems.get() );
 		}
 

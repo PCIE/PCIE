@@ -1,4 +1,4 @@
-(function (QUnit) {
+(function(QUnit) {
 
   var ProxyModel = Backbone.Model.extend();
   var Klass = Backbone.Collection.extend({
@@ -64,11 +64,11 @@
   });
 
 
-  QUnit.test('preinitialize', function (assert) {
+  QUnit.test('preinitialize', function(assert) {
     assert.expect(2);
     var Model = Backbone.Model.extend({
 
-      preinitialize: function () {
+      preinitialize: function() {
         this.one = 1;
       }
     });
@@ -77,11 +77,11 @@
     assert.equal(model.collection, collection);
   });
 
-  QUnit.test('preinitialize occurs before the model is set up', function (assert) {
+  QUnit.test('preinitialize occurs before the model is set up', function(assert) {
     assert.expect(6);
     var Model = Backbone.Model.extend({
 
-      preinitialize: function () {
+      preinitialize: function() {
         assert.equal(this.collection, undefined);
         assert.equal(this.cid, undefined);
         assert.equal(this.id, undefined);

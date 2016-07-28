@@ -9,7 +9,7 @@ define( [
 	"./selector"
 ], function( jQuery, indexOf, dir, siblings, rneedsContext ) {
 
-    "use strict";
+"use strict";
 
 var rparentsprev = /^(?:parents|prev(?:Until|All))/,
 
@@ -41,24 +41,24 @@ jQuery.fn.extend( {
 			i = 0,
 			l = this.length,
 			matched = [],
-            targets = typeof selectors !== "string" && jQuery(selectors);
+			targets = typeof selectors !== "string" && jQuery( selectors );
 
-        // Positional selectors never match, since there's no _selection_ context
-        if (!rneedsContext.test(selectors)) {
-            for (; i < l; i++) {
-                for (cur = this[i]; cur && cur !== context; cur = cur.parentNode) {
+		// Positional selectors never match, since there's no _selection_ context
+		if ( !rneedsContext.test( selectors ) ) {
+			for ( ; i < l; i++ ) {
+				for ( cur = this[ i ]; cur && cur !== context; cur = cur.parentNode ) {
 
-                    // Always skip document fragments
-                    if (cur.nodeType < 11 && ( targets ?
-                        targets.index(cur) > -1 :
+					// Always skip document fragments
+					if ( cur.nodeType < 11 && ( targets ?
+						targets.index( cur ) > -1 :
 
-                            // Don't pass non-elements to Sizzle
-                        cur.nodeType === 1 &&
-                        jQuery.find.matchesSelector(cur, selectors) )) {
+						// Don't pass non-elements to Sizzle
+						cur.nodeType === 1 &&
+							jQuery.find.matchesSelector( cur, selectors ) ) ) {
 
-                        matched.push(cur);
-                        break;
-                    }
+						matched.push( cur );
+						break;
+					}
 				}
 			}
 		}

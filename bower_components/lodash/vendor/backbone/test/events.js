@@ -1,4 +1,4 @@
-(function (QUnit) {
+(function(QUnit) {
 
   QUnit.module('Backbone.Events');
 

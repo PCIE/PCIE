@@ -180,9 +180,7 @@
     var done = assert.async();
     var delayed = false;
     _.delay(function(){ delayed = true; }, 100);
-    setTimeout(function () {
-      assert.notOk(delayed, "didn't delay the function quite yet");
-    }, 50);
+    setTimeout(function(){ assert.notOk(delayed, "didn't delay the function quite yet"); }, 50);
     setTimeout(function(){ assert.ok(delayed, 'delayed the function'); done(); }, 150);
   });
 
@@ -698,9 +696,9 @@
 
     // Test custom iteratee
     var builtinIteratee = _.iteratee;
-    _.iteratee = function (value) {
+    _.iteratee = function(value) {
       // RegEx values return a function that returns the number of matches
-      if (_.isRegExp(value)) return function (obj) {
+      if (_.isRegExp(value)) return function(obj) {
         return (obj.match(value) || []).length;
       };
       return value;

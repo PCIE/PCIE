@@ -2,7 +2,7 @@ define( [
 	"./core"
 ], function( jQuery ) {
 
-    "use strict";
+"use strict";
 
 jQuery.fn.extend( {
 
@@ -25,6 +25,6 @@ jQuery.fn.extend( {
 	}
 } );
 
-    jQuery.parseJSON = JSON.parse;
+jQuery.parseJSON = JSON.parse;
 
 } );

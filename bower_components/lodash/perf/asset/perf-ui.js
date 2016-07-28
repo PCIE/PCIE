@@ -16,7 +16,7 @@
   /*--------------------------------------------------------------------------*/
 
   // Initialize controls.
-  addEventListener('load', function () {
+  addEventListener('load', function() {
     function eventHandler(event) {
       var buildIndex = buildList.selectedIndex,
           otherIndex = otherList.selectedIndex,

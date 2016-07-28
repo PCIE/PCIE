@@ -4,7 +4,7 @@ define( [
 	"./css"
 ], function( jQuery, access ) {
 
-    "use strict";
+"use strict";
 
 // Create innerHeight, innerWidth, height, width, outerHeight and outerWidth methods
 jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
@@ -21,10 +21,10 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 
 				if ( jQuery.isWindow( elem ) ) {
 
-                    // $( window ).outerWidth/Height return w/h including scrollbars (gh-1729)
-                    return funcName.indexOf("outer") === 0 ?
-                        elem["inner" + name] :
-                        elem.document.documentElement["client" + name];
+					// $( window ).outerWidth/Height return w/h including scrollbars (gh-1729)
+					return funcName.indexOf( "outer" ) === 0 ?
+						elem[ "inner" + name ] :
+						elem.document.documentElement[ "client" + name ];
 				}
 
 				// Get document width or height
@@ -47,7 +47,7 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 
 					// Set width or height on the element
 					jQuery.style( elem, type, value, extra );
-            }, type, chainable ? margin : undefined, chainable);
+			}, type, chainable ? margin : undefined, chainable );
 		};
 	} );
 } );

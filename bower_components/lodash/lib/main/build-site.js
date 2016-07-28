@@ -1,14 +1,14 @@
 'use strict';
 
 var _ = require('lodash'),
-  fs = require('fs'),
-  marky = require('marky-markdown'),
-  path = require('path'),
-  util = require('../common/util');
+    fs = require('fs'),
+    marky = require('marky-markdown'),
+    path = require('path'),
+    util = require('../common/util');
 
 var basePath = path.join(__dirname, '..', '..'),
-  docPath = path.join(basePath, 'doc'),
-  readmePath = path.join(docPath, 'README.md');
+    docPath = path.join(basePath, 'doc'),
+    readmePath = path.join(docPath, 'README.md');
 
 function build(type) {
   // Load markdown and uncomment docdown HTML hints.
@@ -16,9 +16,9 @@ function build(type) {
     .readFileSync(readmePath, 'utf8')
     .replace(/(<)!--\s*|\s*--(>)/g, '$1$2');
 
-  var $ = marky(markdown, {'sanitize': false}),
-    $header = $('h1').first().remove(),
-    version = _.trim($header.find('span').first().text()).slice(1);
+  var $ = marky(markdown, { 'sanitize': false }),
+      $header = $('h1').first().remove(),
+      version = _.trim($header.find('span').first().text()).slice(1);
 
   // Remove docdown horizontal rules.
   $('hr').remove();
@@ -31,7 +31,7 @@ function build(type) {
     .attr('class', null)
     .attr('id', null);
 
-  $(':header > a[href]').each(function () {
+  $(':header > a[href]').each(function() {
     var $a = $(this);
     $a.replaceWith($a.html());
   });

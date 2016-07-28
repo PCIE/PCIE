@@ -1,16 +1,16 @@
 define( [
 	"./core",
 	"./var/document",
-    "./var/documentElement",
+	"./var/documentElement",
 	"./var/rnotwhite",
 	"./var/slice",
 	"./data/var/dataPriv",
 
 	"./core/init",
 	"./selector"
-], function (jQuery, document, documentElement, rnotwhite, slice, dataPriv) {
+], function( jQuery, document, documentElement, rnotwhite, slice, dataPriv ) {
 
-    "use strict";
+"use strict";
 
 var
 	rkeyEvent = /^key/,
@@ -121,11 +121,11 @@ jQuery.event = {
 			selector = handleObjIn.selector;
 		}
 
-        // Ensure that invalid selectors throw exceptions at attach time
-        // Evaluate against documentElement in case elem is a non-element node (e.g., document)
-        if (selector) {
-            jQuery.find.matchesSelector(documentElement, selector);
-        }
+		// Ensure that invalid selectors throw exceptions at attach time
+		// Evaluate against documentElement in case elem is a non-element node (e.g., document)
+		if ( selector ) {
+			jQuery.find.matchesSelector( documentElement, selector );
+		}
 
 		// Make sure that the handler has a unique ID, used to find/remove it later
 		if ( !handler.guid ) {
@@ -290,22 +290,22 @@ jQuery.event = {
 		}
 	},
 
-    dispatch: function (nativeEvent) {
+	dispatch: function( nativeEvent ) {
 
 		// Make a writable jQuery.Event from the native event object
-        var event = jQuery.event.fix(nativeEvent);
+		var event = jQuery.event.fix( nativeEvent );
 
-        var i, j, ret, matched, handleObj, handlerQueue,
-            args = new Array(arguments.length),
+		var i, j, ret, matched, handleObj, handlerQueue,
+			args = new Array( arguments.length ),
 			handlers = ( dataPriv.get( this, "events" ) || {} )[ event.type ] || [],
 			special = jQuery.event.special[ event.type ] || {};
 
 		// Use the fix-ed jQuery.Event rather than the (read-only) native event
 		args[ 0 ] = event;
 
-        for (i = 1; i < arguments.length; i++) {
-            args[i] = arguments[i];
-        }
+		for ( i = 1; i < arguments.length; i++ ) {
+			args[ i ] = arguments[ i ];
+		}
 
 		event.delegateTarget = this;
 
@@ -360,11 +360,11 @@ jQuery.event = {
 			delegateCount = handlers.delegateCount,
 			cur = event.target;
 
-        // Support: IE <=9
+		// Support: IE <=9
 		// Find delegate handlers
 		// Black-hole SVG <use> instance trees (#13180)
 		//
-        // Support: Firefox <=42
+		// Support: Firefox <=42
 		// Avoid non-left-click in FF but don't block IE radio events (#3861, gh-2343)
 		if ( delegateCount && cur.nodeType &&
 			( event.type !== "click" || isNaN( event.button ) || event.button < 1 ) ) {
@@ -405,38 +405,38 @@ jQuery.event = {
 		return handlerQueue;
 	},
 
-    addProp: function (name, hook) {
-        Object.defineProperty(jQuery.Event.prototype, name, {
-            enumerable: true,
-            configurable: true,
+	addProp: function( name, hook ) {
+		Object.defineProperty( jQuery.Event.prototype, name, {
+			enumerable: true,
+			configurable: true,
 
-            get: jQuery.isFunction(hook) ?
-                function () {
-                    if (this.originalEvent) {
-                        return hook(this.originalEvent);
-                    }
-                } :
-                function () {
-                    if (this.originalEvent) {
-                        return this.originalEvent[name];
-                    }
-                },
+			get: jQuery.isFunction( hook ) ?
+				function() {
+					if ( this.originalEvent ) {
+							return hook( this.originalEvent );
+					}
+				} :
+				function() {
+					if ( this.originalEvent ) {
+							return this.originalEvent[ name ];
+					}
+				},
 
-            set: function (value) {
-                Object.defineProperty(this, name, {
-                    enumerable: true,
-                    configurable: true,
-                    writable: true,
-                    value: value
-                });
+			set: function( value ) {
+				Object.defineProperty( this, name, {
+					enumerable: true,
+					configurable: true,
+					writable: true,
+					value: value
+				} );
 			}
-        });
+		} );
 	},
 
-    fix: function (originalEvent) {
-        return originalEvent[jQuery.expando] ?
-            originalEvent :
-            new jQuery.Event(originalEvent);
+	fix: function( originalEvent ) {
+		return originalEvent[ jQuery.expando ] ?
+			originalEvent :
+			new jQuery.Event( originalEvent );
 	},
 
 	special: {
@@ -519,20 +519,20 @@ jQuery.Event = function( src, props ) {
 		this.isDefaultPrevented = src.defaultPrevented ||
 				src.defaultPrevented === undefined &&
 
-                // Support: Android <=2.3 only
+				// Support: Android <=2.3 only
 				src.returnValue === false ?
 			returnTrue :
 			returnFalse;
 
-        // Create target properties
-        // Support: Safari <=6 - 7 only
-        // Target should not be a text node (#504, #13143)
-        this.target = ( src.target && src.target.nodeType === 3 ) ?
-            src.target.parentNode :
-            src.target;
+		// Create target properties
+		// Support: Safari <=6 - 7 only
+		// Target should not be a text node (#504, #13143)
+		this.target = ( src.target && src.target.nodeType === 3 ) ?
+			src.target.parentNode :
+			src.target;
 
-        this.currentTarget = src.currentTarget;
-        this.relatedTarget = src.relatedTarget;
+		this.currentTarget = src.currentTarget;
+		this.relatedTarget = src.relatedTarget;
 
 	// Event type
 	} else {
@@ -592,53 +592,53 @@ jQuery.Event.prototype = {
 };
 
 // Includes all common event props including KeyEvent and MouseEvent specific props
-    jQuery.each({
-        altKey: true,
-        bubbles: true,
-        cancelable: true,
-        changedTouches: true,
-        ctrlKey: true,
-        detail: true,
-        eventPhase: true,
-        metaKey: true,
-        pageX: true,
-        pageY: true,
-        shiftKey: true,
-        view: true,
-        "char": true,
-        charCode: true,
-        key: true,
-        keyCode: true,
-        button: true,
-        buttons: true,
-        clientX: true,
-        clientY: true,
-        offsetX: true,
-        offsetY: true,
-        pointerId: true,
-        pointerType: true,
-        screenX: true,
-        screenY: true,
-        targetTouches: true,
-        toElement: true,
-        touches: true,
+jQuery.each( {
+	altKey: true,
+	bubbles: true,
+	cancelable: true,
+	changedTouches: true,
+	ctrlKey: true,
+	detail: true,
+	eventPhase: true,
+	metaKey: true,
+	pageX: true,
+	pageY: true,
+	shiftKey: true,
+	view: true,
+	"char": true,
+	charCode: true,
+	key: true,
+	keyCode: true,
+	button: true,
+	buttons: true,
+	clientX: true,
+	clientY: true,
+	offsetX: true,
+	offsetY: true,
+	pointerId: true,
+	pointerType: true,
+	screenX: true,
+	screenY: true,
+	targetTouches: true,
+	toElement: true,
+	touches: true,
 
-        which: function (event) {
-            var button = event.button;
+	which: function( event ) {
+		var button = event.button;
 
-            // Add which for key events
-            if (event.which == null && rkeyEvent.test(event.type)) {
-                return event.charCode != null ? event.charCode : event.keyCode;
-            }
+		// Add which for key events
+		if ( event.which == null && rkeyEvent.test( event.type ) ) {
+			return event.charCode != null ? event.charCode : event.keyCode;
+		}
 
-            // Add which for click: 1 === left; 2 === middle; 3 === right
-            if (!event.which && button !== undefined && rmouseEvent.test(event.type)) {
-                return ( button & 1 ? 1 : ( button & 2 ? 3 : ( button & 4 ? 2 : 0 ) ) );
-            }
+		// Add which for click: 1 === left; 2 === middle; 3 === right
+		if ( !event.which && button !== undefined && rmouseEvent.test( event.type ) ) {
+			return ( button & 1 ? 1 : ( button & 2 ? 3 : ( button & 4 ? 2 : 0 ) ) );
+		}
 
-            return event.which;
-        }
-    }, jQuery.event.addProp);
+		return event.which;
+	}
+}, jQuery.event.addProp );
 
 // Create mouseenter/leave events using mouseover/out and event-time checks
 // so that event delegation works in jQuery.
@@ -678,7 +678,7 @@ jQuery.each( {
 
 jQuery.fn.extend( {
 
-    on: function( types, selector, data, fn ) {
+	on: function( types, selector, data, fn ) {
 		return on( this, types, selector, data, fn );
 	},
 	one: function( types, selector, data, fn ) {

@@ -6,9 +6,9 @@ define( [
 	"./attributes/prop"
 ], function( jQuery, rcheckableType ) {
 
-    "use strict";
+"use strict";
 
-    var
+var
 	rbracket = /\[\]$/,
 	rCRLF = /\r?\n/g,
 	rsubmitterTypes = /^(?:submit|button|image|reset|file)$/i,
@@ -57,15 +57,15 @@ function buildParams( prefix, obj, traditional, add ) {
 jQuery.param = function( a, traditional ) {
 	var prefix,
 		s = [],
-        add = function (key, valueOrFunction) {
+		add = function( key, valueOrFunction ) {
 
-            // If value is a function, invoke it and use its return value
-            var value = jQuery.isFunction(valueOrFunction) ?
-                valueOrFunction() :
-                valueOrFunction;
+			// If value is a function, invoke it and use its return value
+			var value = jQuery.isFunction( valueOrFunction ) ?
+				valueOrFunction() :
+				valueOrFunction;
 
-            s[s.length] = encodeURIComponent(key) + "=" +
-                encodeURIComponent(value == null ? "" : value);
+			s[ s.length ] = encodeURIComponent( key ) + "=" +
+				encodeURIComponent( value == null ? "" : value );
 		};
 
 	// If an array was passed in, assume that it is an array of form elements.
@@ -86,7 +86,7 @@ jQuery.param = function( a, traditional ) {
 	}
 
 	// Return the resulting serialization
-    return s.join("&");
+	return s.join( "&" );
 };
 
 jQuery.fn.extend( {

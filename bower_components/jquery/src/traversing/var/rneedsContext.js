@@ -2,7 +2,7 @@ define( [
 	"../../core",
 	"../../selector"
 ], function( jQuery ) {
-    "use strict";
+	"use strict";
 
 	return jQuery.expr.match.needsContext;
 } );

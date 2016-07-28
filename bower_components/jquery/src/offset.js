@@ -13,7 +13,7 @@ define( [
 	"./selector" // contains
 ], function( jQuery, access, document, documentElement, rnumnonpx, curCSS, addGetHookIf, support ) {
 
-    "use strict";
+"use strict";
 
 /**
  * Gets a window from an element
@@ -77,7 +77,7 @@ jQuery.offset = {
 jQuery.fn.extend( {
 	offset: function( options ) {
 
-        // Preserve chaining for setter
+		// Preserve chaining for setter
 		if ( arguments.length ) {
 			return options === undefined ?
 				this :
@@ -86,36 +86,36 @@ jQuery.fn.extend( {
 				} );
 		}
 
-        var docElem, win, rect, doc,
-            elem = this[0];
+		var docElem, win, rect, doc,
+			elem = this[ 0 ];
 
-        if (!elem) {
+		if ( !elem ) {
 			return;
 		}
 
-        // Support: IE <=11 only
-        // Running getBoundingClientRect on a
-        // disconnected node in IE throws an error
-        if (!elem.getClientRects().length) {
-            return {top: 0, left: 0};
-        }
-
-        rect = elem.getBoundingClientRect();
-
-        // Make sure element is not hidden (display: none)
-        if (rect.width || rect.height) {
-            doc = elem.ownerDocument;
-            win = getWindow(doc);
-            docElem = doc.documentElement;
-
-            return {
-                top: rect.top + win.pageYOffset - docElem.clientTop,
-                left: rect.left + win.pageXOffset - docElem.clientLeft
-            };
+		// Support: IE <=11 only
+		// Running getBoundingClientRect on a
+		// disconnected node in IE throws an error
+		if ( !elem.getClientRects().length ) {
+			return { top: 0, left: 0 };
 		}
 
-        // Return zeros for disconnected and hidden elements (gh-2310)
-        return rect;
+		rect = elem.getBoundingClientRect();
+
+		// Make sure element is not hidden (display: none)
+		if ( rect.width || rect.height ) {
+			doc = elem.ownerDocument;
+			win = getWindow( doc );
+			docElem = doc.documentElement;
+
+			return {
+				top: rect.top + win.pageYOffset - docElem.clientTop,
+				left: rect.left + win.pageXOffset - docElem.clientLeft
+			};
+		}
+
+		// Return zeros for disconnected and hidden elements (gh-2310)
+		return rect;
 	},
 
 	position: function() {
@@ -146,10 +146,10 @@ jQuery.fn.extend( {
 			}
 
 			// Add offsetParent borders
-            parentOffset = {
-                top: parentOffset.top + jQuery.css(offsetParent[0], "borderTopWidth", true),
-                left: parentOffset.left + jQuery.css(offsetParent[0], "borderLeftWidth", true)
-            };
+			parentOffset = {
+				top: parentOffset.top + jQuery.css( offsetParent[ 0 ], "borderTopWidth", true ),
+				left: parentOffset.left + jQuery.css( offsetParent[ 0 ], "borderLeftWidth", true )
+			};
 		}
 
 		// Subtract parent offsets and element margins

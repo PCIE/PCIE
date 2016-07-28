@@ -367,7 +367,7 @@ function onJobStart(error, res, body) {
     return;
   }
   var statusCode = _.get(res, 'statusCode'),
-    taskId = _.first(_.get(body, 'js tests'));
+      taskId = _.first(_.get(body, 'js tests'));
 
   if (error || !taskId || statusCode != 200) {
     if (this.attempts < this.retries) {
@@ -409,12 +409,12 @@ function onJobStatus(error, res, body) {
     return;
   }
   var completed = _.get(body, 'completed', false),
-    data = _.first(_.get(body, 'js tests')),
+      data = _.first(_.get(body, 'js tests')),
       elapsed = (_.now() - this.timestamp) / 1000,
-    jobId = _.get(data, 'job_id', null),
-    jobResult = _.get(data, 'result', null),
-    jobStatus = _.get(data, 'status', ''),
-    jobUrl = _.get(data, 'url', null),
+      jobId = _.get(data, 'job_id', null),
+      jobResult = _.get(data, 'result', null),
+      jobStatus = _.get(data, 'status', ''),
+      jobUrl = _.get(data, 'url', null),
       expired = (elapsed >= queueTimeout && !_.includes(jobStatus, 'in progress')),
       options = this.options,
       platform = options.platforms[0];
@@ -442,7 +442,7 @@ function onJobStatus(error, res, body) {
   }
   var description = browserName(platform[1]) + ' ' + platform[2] + ' on ' + _.startCase(platform[0]),
       errored = !jobResult || !jobResult.passed || reError.test(message) || reError.test(jobStatus),
-    failures = _.get(jobResult, 'failed'),
+      failures = _.get(jobResult, 'failed'),
       label = options.name + ':',
       tunnel = this.tunnel;
 
