@@ -2,6 +2,7 @@ PCIE.config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/');
 
+
     $stateProvider
         .state('root', {
             url: '',
@@ -19,7 +20,7 @@ PCIE.config(function ($stateProvider, $urlRouterProvider) {
             url: '/',
             views: {
                 'container@': {
-                    templateUrl: '/PCIE/views/pcie.html'
+                    templateUrl: '/PCIE/views/accueil.html'
                 }
             }
         })
@@ -27,7 +28,26 @@ PCIE.config(function ($stateProvider, $urlRouterProvider) {
             url: '/pcie',
             views: {
                 'container@': {
-                    templateUrl: '/PCIE/views/pcie.html'
+                    templateUrl: '/PCIE/views/pcie/pcie.html',
+                    controller: 'pcieCtrl'
+                }
+            }
+        })
+        .state('root.service', {
+            url: '/service',
+            views: {
+                'container@': {
+                    templateUrl: '/PCIE/views/service/service.html',
+                    controller: 'serviceCtrl'
+                }
+            }
+        })
+        .state('root.carriere', {
+            url: '/carriere',
+            views: {
+                'container@': {
+                    templateUrl: '/PCIE/views/carriere/carriere.html',
+                    controller: 'carriereCtrl'
                 }
             }
         })

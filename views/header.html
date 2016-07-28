@@ -7,49 +7,25 @@
                     <i class="fa fa-bars" aria-hidden="true"></i> Menu
                 </button>
                 <a id="header-logo" class="navbar-brand" href="#">
-                    <img id="fat" src="./img/pcie-logo-fat.png" style="width:240px;height:90px;">
-                    <img id="tiny" src="./img/pcie-logo-tiny.gif" style="width:104px;height:40px;">
+                    <img id="fat" src="./img/pcie-logo.gif" style="width:240px;height:90px;">
+                    <img id="tiny" src="./img/pcie-logo.gif" style="width:104px;height:40px;">
                 </a>
             </div>
             <div id="firstNavBar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav client-nav navbar-right">
-                    <li class="categorie">
-                        <a href="#">A propos de PCIE</a>
-                    </li>
-                    <li class="categorie">
-                        <a href="#">Nos Services</a>
-                    </li>
-                    <li class="categorie">
-                        <a href="#">Carrières</a>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="categorie" ng-repeat="c in headerMenu">
+                        <a href="{{ c.url }}">{{ c.categorie }}</a>
                     </li>
                     <li class="divider"></li>
-                    <li class="sous-categorie" style="display:none">
-                        <a data-toggle="collapse" data-target=".navbar-collapse">Qui Sommes Nous ?</a>
-                    </li>
-                    <li class="sous-categorie" style="display:none">
-                        <a data-toggle="collapse" data-target=".navbar-collapse">Nos Valeurs</a>
-                    </li>
-                    <li class="sous-categorie" style="display:none">
-                        <a data-toggle="collapse" data-target=".navbar-collapse">Notre équipe</a>
-                    </li>
-                    <li class="sous-categorie" style="display:none">
-                        <a data-toggle="collapse" data-target=".navbar-collapse">Localisation</a>
+                    <li class="sous-categorie" style="display:none" ng-repeat="sm in sousMenu">
+                        <a href="{{ sm.anchor }}" data-toggle="collapse" data-target=".navbar-collapse">{{ sm.nom }}</a>
                     </li>
                 </ul>
             </div>
             <div id="secondNavBar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav client-nav navbar-right">
-                    <li>
-                        <a>Qui sommes nous ?</a>
-                    </li>
-                    <li>
-                        <a>Nos Valeurs</a>
-                    </li>
-                    <li>
-                        <a>Notre équipe</a>
-                    </li>
-                    <li>
-                        <a>Localisation</a>
+                <ul class="nav navbar-nav navbar-right subcategorie">
+                    <li ng-repeat="sm in sousMenu">
+                        <a href="{{ sm.anchor }}">{{ sm.nom }}</a>
                     </li>
                 </ul>
             </div>
