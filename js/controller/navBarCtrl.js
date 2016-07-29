@@ -1,4 +1,4 @@
-PCIE.controller('navBarCtrl', function ($scope, $rootScope, $location, $anchorScroll, LocalFactory, anchorSmoothScroll) {
+PCIE.controller('navBarCtrl', function ($scope, $rootScope, $location, $anchorScroll, LocalFactory, anchorService) {
         "use strict";
 
         LocalFactory.menu().then(function (response) {
@@ -8,16 +8,21 @@ PCIE.controller('navBarCtrl', function ($scope, $rootScope, $location, $anchorSc
 
     $scope.scrollTo = function (anchor) {
         $anchorScroll(anchor);
-    }
+    };
 
         $rootScope.$on("$locationChangeSuccess", function () {
             $scope.sousMenu = getSousMenu($location.url());
+            let anchor = anchorService.getAnchor();
+            if (anchor != null) {
+                $anchorScroll(anchor);
+            }
         });
 
         function getSousMenu(url) {
-            let prefix = '.#';
+            let prefix = '/';
             for (var i = 0; i < $scope.headerMenu.length; i++) {
-                if ($scope.headerMenu[i].url === prefix + url) {
+                console.log($scope.headerMenu[i].url)
+                if (prefix + $scope.headerMenu[i].url === url) {
                     return $scope.headerMenu[i].souscategorie;
                 }
             }

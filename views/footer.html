@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-6">
-                <h3>PCIE</h3>
+                <img id="bottomLogo" src="./img/pcie-logo.gif" style="width:104px;height:40px;">
                 <ul class="list-unstyled">
                     <li><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;6 Avenue Prat Gimont<br>
                         &nbsp;&nbsp;&nbsp;31130 Balma
@@ -14,9 +14,9 @@
                 </ul>
             </div>
             <div class="col-md-3 col-sm-6" ng-repeat="c in footerMenu">
-                <h3><a href="#">{{ c.categorie }}</a></h3>
+                <h3><a href="{{ c.url }}">{{ c.categorie }}</a></h3>
                 <ul class="list-unstyled">
-                    <li ng-repeat="sc in c.souscategorie"><a href="#">{{ sc.nom }}</a></li>
+                    <li ng-repeat="sc in c.souscategorie"><a ng-click="scrollTo(c.url, sc.id)">{{ sc.nom }}</a></li>
                 </ul>
             </div>
         </div>

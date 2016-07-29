@@ -1,10 +1,21 @@
-PCIE.service('anchorSmoothScroll', function () {
+PCIE.service('anchorService', function () {
+
+    var anchor = null;
+
+    this.getAnchor = function () {
+        let retour = this.anchor;
+        this.anchor = null;
+        return retour;
+    }
+
+    this.setAnchor = function (anchor) {
+        this.anchor = anchor;
+    }
 
     this.scrollTo = function (eID) {
 
-        // This scrolling function 
+        // This scrolling function
         // is from http://www.itnewb.com/tutorial/Creating-the-Smooth-Scroll-Effect-with-JavaScript
-
         var startY = currentYPosition();
         var stopY = elmYPosition(eID);
         var distance = stopY > startY ? stopY - startY : startY - stopY;
