@@ -51,7 +51,19 @@ PCIE.config(function ($stateProvider, $urlRouterProvider) {
                 }
             }
         })
-        .state('root.mentionsLegales', {
+        .state('tiny', {
+            url: '',
+            abstract: true,
+            views: {
+                'footer': {
+                    templateUrl: '/PCIE/views/footer.html'
+                },
+                'header': {
+                    templateUrl: '/PCIE/views/tinyHeader.html'
+                }
+            }
+        })
+        .state('tiny.mentionsLegales', {
             url: '/mentionsLegales',
             views: {
                 'container@': {

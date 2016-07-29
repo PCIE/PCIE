@@ -18,14 +18,14 @@
                     </li>
                     <li class="divider"></li>
                     <li class="sous-categorie" style="display:none" ng-repeat="sm in sousMenu">
-                        <a href="{{ sm.anchor }}" data-toggle="collapse" data-target=".navbar-collapse">{{ sm.nom }}</a>
+                        <a href="{{ sm.anchor }}" onclick="scrollTo(sm.anchor)" data-toggle="collapse" data-target=".navbar-collapse" onclick="return false;">{{ sm.nom }}</a>
                     </li>
                 </ul>
             </div>
             <div id="secondNavBar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right subcategorie">
                     <li ng-repeat="sm in sousMenu">
-                        <a href="{{ sm.anchor }}">{{ sm.nom }}</a>
+                        <a href="{{ sm.anchor }}" onclick="return false;">{{ sm.nom }}</a>
                     </li>
                 </ul>
             </div>

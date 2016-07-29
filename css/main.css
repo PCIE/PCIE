@@ -19,7 +19,7 @@ footer {
 #mainFooter h3 a:hover,
 #mainFooter ul li a,
 #mainFooter ul li a:hover {
-    color: black;
+    color: #286090;
     text-decoration: none;
 }
 
@@ -29,12 +29,12 @@ footer {
 }
 
 #mainFooter h3 {
-    color: black;
+    color: #286090;
     text-decoration: none;
 }
 
 #mainFooter {
-    background-color: white;
+    background-color: #ccc;
 }
 
 #footerBottom {
@@ -64,7 +64,7 @@ footer {
 
 #mainNav {
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #31708f;
+    color: #286090;
     font-size: 14px;
     text-transform: uppercase;
     font-weight: 600;
@@ -146,7 +146,7 @@ nav.navbar.shrink {
         height: 1px;
         margin: 9px 1px;
         overflow: hidden;
-        background-color: #1E88E5;
+        background-color: #286090;
     }
 
     #fat {

@@ -1,10 +1,14 @@
-PCIE.controller('navBarCtrl', function ($scope, $rootScope, $location, LocalFactory) {
+PCIE.controller('navBarCtrl', function ($scope, $rootScope, $location, $anchorScroll, LocalFactory, anchorSmoothScroll) {
         "use strict";
 
         LocalFactory.menu().then(function (response) {
             $scope.headerMenu = response;
             $scope.sousMenu = getSousMenu($location.url());
         });
+
+    $scope.scrollTo = function (anchor) {
+        $anchorScroll(anchor);
+    }
 
         $rootScope.$on("$locationChangeSuccess", function () {
             $scope.sousMenu = getSousMenu($location.url());
