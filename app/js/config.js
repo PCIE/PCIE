@@ -28,7 +28,7 @@ PCIE.config(function ($stateProvider, $urlRouterProvider) {
             url: '/pcie',
             views: {
                 'container@': {
-                    templateUrl: '/PCIE/app/views/pcie.html',
+                    templateUrl: '/PCIE/app/views/pcie/pcie.html',
                     controller: 'pcieCtrl'
                 }
             }
@@ -60,14 +60,6 @@ PCIE.config(function ($stateProvider, $urlRouterProvider) {
                 },
                 'header': {
                     templateUrl: '/PCIE/app/views/tinyHeader.html'
-                }
-            }
-        })
-        .state('tiny.login', {
-            url: '/login',
-            views: {
-                'container@': {
-                    templateUrl: '/PCIE/app/views/login.html'
                 }
             }
         })

@@ -21,6 +21,7 @@ PCIE.controller('navBarCtrl', function ($scope, $rootScope, $location, $anchorSc
         function getSousMenu(url) {
             let prefix = '/';
             for (var i = 0; i < $scope.headerMenu.length; i++) {
+                console.log($scope.headerMenu[i].url)
                 if (prefix + $scope.headerMenu[i].url === url) {
                     return $scope.headerMenu[i].souscategorie;
                 }

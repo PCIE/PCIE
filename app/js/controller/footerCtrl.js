@@ -5,10 +5,11 @@ PCIE.controller('footerCtrl', function ($scope, LocalFactory, $location, anchorS
             $scope.footerMenu = response;
         });
 
-        $scope.scrollTo = function (page, anchor) {
-            $location.url(page);
-            anchorService.setAnchor(anchor);
-        };
+    $scope.scrollTo = function (page, anchor) {
+        $location.url(page);
+        anchorService.setAnchor(anchor);
+    };
+
 
     }
 );
