@@ -82,7 +82,11 @@ app.get('/checkpass/:pass', function (req, res) {
 
 app.post('/auth', authorize.authorize);
 
-app.route('/').get(res.render('../app/index.html'));
+app.get('/', function(req, res) {
+    // Prepare the context
+    res.render('/app/index.html');
+});
+
 app.get('/utilisateurs', utilisateurs.selectAll);
 app.get('/OffresUtilisateur/:id', utilisateurs.selectOffresFromUtilisateur);
 app.post('/utilisateur/add', utilisateurs.insertUtilisateur);
