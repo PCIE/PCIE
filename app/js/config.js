@@ -9,10 +9,10 @@ PCIE.config(function ($stateProvider, $urlRouterProvider) {
             abstract: true,
             views: {
                 'footer': {
-                    templateUrl: '/PCIE/app/views/footer.html'
+                    templateUrl: '../views/footer.html'
                 },
                 'header': {
-                    templateUrl: '/PCIE/app/views/header.html'
+                    templateUrl: '../views/header.html'
                 }
             }
         })
@@ -20,7 +20,7 @@ PCIE.config(function ($stateProvider, $urlRouterProvider) {
             url: '/',
             views: {
                 'container@': {
-                    templateUrl: '/PCIE/app/views/accueil.html'
+                    templateUrl: '../views/accueil.html'
                 }
             }
         })
@@ -28,7 +28,7 @@ PCIE.config(function ($stateProvider, $urlRouterProvider) {
             url: '/pcie',
             views: {
                 'container@': {
-                    templateUrl: '/PCIE/app/views/pcie/pcie.html',
+                    templateUrl: '../views/pcie/pcie.html',
                     controller: 'pcieCtrl'
                 }
             }
@@ -37,7 +37,7 @@ PCIE.config(function ($stateProvider, $urlRouterProvider) {
             url: '/service',
             views: {
                 'container@': {
-                    templateUrl: '/PCIE/app/views/service/service.html',
+                    templateUrl: '../views/service/service.html',
                     controller: 'serviceCtrl'
                 }
             }
@@ -46,7 +46,7 @@ PCIE.config(function ($stateProvider, $urlRouterProvider) {
             url: '/carriere',
             views: {
                 'container@': {
-                    templateUrl: '/PCIE/app/views/carriere/carriere.html',
+                    templateUrl: '../views/carriere/carriere.html',
                     controller: 'carriereCtrl'
                 }
             }
@@ -56,10 +56,10 @@ PCIE.config(function ($stateProvider, $urlRouterProvider) {
             abstract: true,
             views: {
                 'footer': {
-                    templateUrl: '/PCIE/app/views/footer.html'
+                    templateUrl: '../views/footer.html'
                 },
                 'header': {
-                    templateUrl: '/PCIE/app/views/tinyHeader.html'
+                    templateUrl: '../views/tinyHeader.html'
                 }
             }
         })
@@ -67,7 +67,7 @@ PCIE.config(function ($stateProvider, $urlRouterProvider) {
             url: '/mentionsLegales',
             views: {
                 'container@': {
-                    templateUrl: '/PCIE/app/views/mentions-legales.html'
+                    templateUrl: '../views/mentions-legales.html'
                 }
             }
         })

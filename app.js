@@ -82,7 +82,7 @@ app.get('/checkpass/:pass', function (req, res) {
 
 app.post('/auth', authorize.authorize);
 
-app.get('/', dao.index);
+app.route('/').get(res.render('../app/index.html'));
 app.get('/utilisateurs', utilisateurs.selectAll);
 app.get('/OffresUtilisateur/:id', utilisateurs.selectOffresFromUtilisateur);
 app.post('/utilisateur/add', utilisateurs.insertUtilisateur);
